@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_field, sort_child_properties_last, avoid_print
+// ignore_for_file: unnecessary_null_comparison, prefer_const_constructors, prefer_if_null_operators, library_private_types_in_public_api
 
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/tshirt.dart';
@@ -10,14 +10,14 @@ import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   static const routeName = "/";
-  const Home({super.key});
+  const Home({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  Widget mainBody = Container();
+  late Widget mainBody;
   List<Tshirt> _tshirtList = [];
 
   @override
@@ -41,34 +41,52 @@ class _HomeState extends State<Home> {
 
   Widget showTshirt() {
     return ListView.builder(
-        itemCount: _tshirtList.length,
-        itemBuilder: (context, index) {
-          Tshirt tshirt = _tshirtList[index];
-          var imgUrl = tshirt.img;
-          imgUrl ??=
-              'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
+      itemCount: (_tshirtList.length / 2).ceil(),
+      itemBuilder: (BuildContext context, int rowIndex) {
+        final int startIndex = rowIndex * 2;
+        final int endIndex = startIndex + 2;
 
-          return Dismissible(
-            key: UniqueKey(),
-            direction: DismissDirection.endToStart,
-            child: Card(
-                child: ListTile(
-                    leading: AspectRatio(
-                      aspectRatio: 1.0,
-                      child: Image.network(imgUrl),
-                    ),
-                    title: Text("${tshirt.name}"),
-                    subtitle: Text("${tshirt.price} THB"),
-                    onTap: () {
-                      Navigator.push(
+        return Row(
+          children: _tshirtList.sublist(startIndex, endIndex).map((tshirt) {
+            return Expanded(
+              child: Card(
+                margin: EdgeInsets.all(8.0),
+                elevation: 2.0,
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: Column(
+                        children: [
+                          AspectRatio(
+                            aspectRatio: 1,
+                            child: Image.network(
+                              "${tshirt.img}",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Text("${tshirt.name}"),
+                          SizedBox(height: 10.0),
+                          Text("${tshirt.price} THB"),
+                        ],
+                      ),
+                      onTap: () {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => TshirtInfo(),
-                              settings: RouteSettings(arguments: tshirt)));
-                    } // to show info
-                    )),
-          );
-        });
+                            builder: (context) => TshirtInfo(),
+                            settings: RouteSettings(arguments: tshirt),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }).toList(),
+        );
+      },
+    );
   }
 
   @override
@@ -79,7 +97,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Color(0xFF2E2E2E),
       ),
       drawer: SideMenu(),
-      body: mainBody,
+      body: mainBody != null ? mainBody : CircularProgressIndicator(),
     );
   }
 }

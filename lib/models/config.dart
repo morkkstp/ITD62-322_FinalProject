@@ -5,4 +5,5 @@ class Configure {
   static const server = "10.161.2.51:3000";
   static Users login = Users();
   static Tshirt ts = Tshirt();
+  static List<String> size = ts.size!;
 }

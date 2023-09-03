@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors, avoid_print
 
 import 'dart:convert';
 
@@ -31,7 +31,6 @@ class _UserEditState extends State<UserEdit> {
     );
     var rs = usersFromJson("[${resp.body}]");
     if (rs.length == 1) {
-      // Navigator.pop(context, "refresh");
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -40,11 +39,41 @@ class _UserEditState extends State<UserEdit> {
     }
   }
 
-  Widget fnameInputField() {
+  Widget usernameEdit() {
+    return TextFormField(
+      initialValue: user.username,
+      decoration:
+          InputDecoration(labelText: "Username:", border: OutlineInputBorder()),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This field is required";
+        }
+        return null;
+      },
+      onSaved: (newValue) => user.username = newValue,
+    );
+  }
+
+  Widget passwordEdit() {
+    return TextFormField(
+      initialValue: user.password,
+      decoration:
+          InputDecoration(labelText: "Password:", border: OutlineInputBorder()),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This field is required";
+        }
+        return null;
+      },
+      onSaved: (newValue) => user.password = newValue,
+    );
+  }
+
+  Widget fnameEdit() {
     return TextFormField(
       initialValue: user.firstname,
-      decoration:
-          InputDecoration(labelText: "Fullname:", icon: Icon(Icons.person)),
+      decoration: InputDecoration(
+          labelText: "Firstname:", border: OutlineInputBorder()),
       validator: (value) {
         if (value!.isEmpty) {
           return "This field is required";
@@ -55,19 +84,48 @@ class _UserEditState extends State<UserEdit> {
     );
   }
 
-  Widget passwordInputField() {
+  Widget lnameEdit() {
     return TextFormField(
-      initialValue: user.password,
-      obscureText: true,
+      initialValue: user.lastname,
       decoration:
-          InputDecoration(labelText: "Password:", icon: Icon(Icons.lock)),
+          InputDecoration(labelText: "Lastname:", border: OutlineInputBorder()),
       validator: (value) {
         if (value!.isEmpty) {
           return "This field is required";
         }
         return null;
       },
-      onSaved: (newValue) => user.password = newValue,
+      onSaved: (newValue) => user.lastname = newValue,
+    );
+  }
+
+  Widget phoneEdit() {
+    return TextFormField(
+      initialValue: user.phone,
+      decoration:
+          InputDecoration(labelText: "Phone:", border: OutlineInputBorder()),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This field is required";
+        }
+        return null;
+      },
+      onSaved: (newValue) => user.phone = newValue,
+    );
+  }
+
+  Widget addressEdit() {
+    return TextFormField(
+      initialValue: user.address,
+      decoration:
+          InputDecoration(labelText: "Address:", border: OutlineInputBorder()),
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This field is required";
+        }
+        return null;
+      },
+      onSaved: (newValue) => user.address = newValue,
     );
   }
 
@@ -80,10 +138,12 @@ class _UserEditState extends State<UserEdit> {
           if (user.id == null) {
             print('This is not a user');
           } else {
-            updateData(user); // เรียกใช้งาน updateData ด้วย user
+            updateData(user);
           }
         }
       },
+      style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.green, padding: const EdgeInsets.all(20.0)),
       child: Text("Save"),
     );
   }
@@ -98,8 +158,8 @@ class _UserEditState extends State<UserEdit> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text("User Form"),
-      ),
+          title: const Text("Edit Profile"),
+          backgroundColor: Color(0xFF2E2E2E)),
       body: Container(
         margin: EdgeInsets.all(10),
         child: Form(
@@ -107,11 +167,18 @@ class _UserEditState extends State<UserEdit> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                fnameInputField(),
-                passwordInputField(),
-                SizedBox(
-                  height: 10,
-                ),
+                usernameEdit(),
+                SizedBox(height: 20),
+                passwordEdit(),
+                SizedBox(height: 20),
+                fnameEdit(),
+                SizedBox(height: 20),
+                lnameEdit(),
+                SizedBox(height: 20),
+                phoneEdit(),
+                SizedBox(height: 20),
+                addressEdit(),
+                SizedBox(height: 20),
                 submitButton()
               ],
             )),

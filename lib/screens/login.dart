@@ -53,13 +53,6 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget textHeader() {
-    return Padding(
-      padding: EdgeInsets.only(top: 50.0),
-      child: Center(child: Text("Login", style: TextStyle(fontSize: 20))),
-    );
-  }
-
   Widget usernameInputField() {
     return TextFormField(
       initialValue: 'tuser1',
@@ -91,7 +84,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget submitButton() {
+  Widget loginButton() {
     return ElevatedButton(
       onPressed: () {
         if (_formkey.currentState!.validate()) {
@@ -127,12 +120,11 @@ class _LoginState extends State<Login> {
               children: [
                 header(),
                 SizedBox(height: 30.0),
-                // textHeader(),
                 usernameInputField(),
                 SizedBox(height: 20.0),
                 passwordInputField(),
                 SizedBox(height: 20.0),
-                Center(child: submitButton()),
+                Center(child: loginButton()),
               ],
             ),
           ),
