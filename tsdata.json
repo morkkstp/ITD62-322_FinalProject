@@ -1,0 +1,132 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "tuser1",
+      "password": "tu111",
+      "firstname": "Tony",
+      "lastname": "Maddox",
+      "phone": "0621234567",
+      "address": "Thasala, Nakhon Si Thammarat"
+    },
+    {
+      "id": 2,
+      "username": "tuser2",
+      "password": "tu222",
+      "firstname": "Jasper",
+      "lastname": "Maverick",
+      "phone": "0627654321",
+      "address": "Thung Song, Nakhon Si Thammarat"
+    },
+    {
+      "id": 3,
+      "username": "tuser3",
+      "password": "tu333",
+      "firstname": "Leo",
+      "lastname": "Jude",
+      "phone": "0629876543",
+      "address": "Sichon, Nakhon Si Thammarat"
+    },
+    {
+      "id": 4,
+      "username": "tuser4",
+      "password": "tu444",
+      "firstname": "Zane",
+      "lastname": "Roman",
+      "phone": "0623456789",
+      "address": "Khanom, Nakhon Si Thammarat"
+    }
+  ],
+  "tshirt": [
+    {
+      "id": 1,
+      "name": "T-shirt Round Neck - Color Navy",
+      "description": "A Navy t-shirt with a classic design and ultimate comfort.",
+      "img": "https://drive.google.com/file/d/1uxOawOnMbJ6WgJZHKGC14EoPwHoqrV3T/view?usp=sharing",
+      "price": 390,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "T-shirt Round Neck - Color Avocado",
+      "description": "A Avocado t-shirt with a classic design and ultimate comfort.",
+      "img": "https://drive.google.com/file/d/1cQ9ImQK4QyHne6oDSAM0R-k3LImo0_g7/view?usp=sharing",
+      "price": 390,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "T-shirt Round Neck - Color Charcoal Blue",
+      "description": "A Charcoal Blue t-shirt with a classic design and ultimate comfort.",
+      "img": "https://drive.google.com/file/d/1x61YzspUx2BYZmE54MAjWstKDYXDIyjh/view?usp=sharing",
+      "price": 390,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "T-shirt Round Neck - Color Lavender",
+      "description": "A Lavender t-shirt with a classic design and ultimate comfort.",
+      "img": "https://drive.google.com/file/d/1PDlMkZYFCRNkIqwJPA3UiLgdlKN-MsFE/view?usp=sharing",
+      "price": 390,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "T-shirt Round Neck - Color Olive Oil",
+      "description": "A Olive Oil t-shirt with a classic design and ultimate comfort.",
+      "img": "https://drive.google.com/file/d/1uunE9f2Rpa3G-hNykOpHs211zq2F6ag9/view?usp=sharing",
+      "price": 390,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "T-shirt Round Neck - Color Sand",
+      "description": "A Sand t-shirt with a classic design and ultimate comfort.",
+      "img": "https://drive.google.com/file/d/1zVvmB-mTzbC5NkKaBuMb7GQR001O7UGs/view?usp=sharing",
+      "price": 390,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ]
+    }
+  ],
+  "order": [
+    {
+      "id": 1,
+      "name": "T-shirt Round Neck - Color Navy",
+      "count": 2,
+      "totalprice": 780,
+      "firstname": "Tony",
+      "lastname": "Maddox",
+      "phone": "0621234567",
+      "address": "Thasala, Nakhon Si Thammarat"
+    }
+  ]
+}
