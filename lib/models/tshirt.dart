@@ -16,7 +16,7 @@ class Tshirt {
   String? description;
   String? img;
   int? price;
-  List<String>? size;
+  Rating? rating;
 
   Tshirt({
     this.id,
@@ -24,7 +24,7 @@ class Tshirt {
     this.description,
     this.img,
     this.price,
-    this.size,
+    this.rating,
   });
 
   factory Tshirt.fromJson(Map<String, dynamic> json) => Tshirt(
@@ -33,9 +33,7 @@ class Tshirt {
         description: json["description"],
         img: json["img"],
         price: json["price"],
-        size: json["size"] == null
-            ? []
-            : List<String>.from(json["size"]!.map((x) => x)),
+        rating: json["rating"] == null ? null : Rating.fromJson(json["rating"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,6 +42,26 @@ class Tshirt {
         "description": description,
         "img": img,
         "price": price,
-        "size": size == null ? [] : List<dynamic>.from(size!.map((x) => x)),
+        "rating": rating?.toJson(),
+      };
+}
+
+class Rating {
+  int? count;
+  double? rate;
+
+  Rating({
+    this.count,
+    this.rate,
+  });
+
+  factory Rating.fromJson(Map<String, dynamic> json) => Rating(
+        count: json["count"],
+        rate: json["rate"]?.toDouble(),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "count": count,
+        "rate": rate,
       };
 }

@@ -77,6 +77,10 @@ class _TshirtInfoState extends State<TshirtInfo> {
               ListTile(
                 title: Text("T-Shirt Size"),
                 subtitle: chooseSize(),
+              ),
+              ListTile(
+                title: Text(
+                    "Rating: ${tshirt.rating!.rate}/5 of ${tshirt.rating!.count}"),
               )
             ],
           ),

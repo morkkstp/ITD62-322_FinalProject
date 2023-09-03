@@ -41,51 +41,84 @@ class _HomeState extends State<Home> {
 
   Widget showTshirt() {
     return ListView.builder(
-      itemCount: (_tshirtList.length / 2).ceil(),
-      itemBuilder: (BuildContext context, int rowIndex) {
-        final int startIndex = rowIndex * 2;
-        final int endIndex = startIndex + 2;
-
-        return Row(
-          children: _tshirtList.sublist(startIndex, endIndex).map((tshirt) {
-            return Expanded(
-              child: Card(
-                margin: EdgeInsets.all(8.0),
-                elevation: 2.0,
-                child: Column(
-                  children: [
-                    ListTile(
-                      title: Column(
-                        children: [
-                          AspectRatio(
-                            aspectRatio: 1,
-                            child: Image.network(
-                              "${tshirt.img}",
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          Text("${tshirt.name}"),
-                          SizedBox(height: 10.0),
-                          Text("${tshirt.price} THB"),
-                        ],
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => TshirtInfo(),
-                            settings: RouteSettings(arguments: tshirt),
-                          ),
-                        );
-                      },
+      itemCount: (_tshirtList.length / 2).ceil() +
+          1, // +1 เพื่อให้มีรายการเสื้อและหัวข้อ
+      itemBuilder: (BuildContext context, int index) {
+        if (index == 0) {
+          // แสดงหัวข้อ "T-Shirt Collection" และเส้นขั้น
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Center(
+                  child: Text(
+                    "T-Shirt Collection", // หัวข้อที่คุณต้องการ
+                    style: TextStyle(
+                      fontSize: 20.0, // ปรับขนาดตามความต้องการ
+                      fontWeight: FontWeight.bold, // ปรับตัวหนาตามความต้องการ
                     ),
-                  ],
+                  ),
                 ),
               ),
-            );
-          }).toList(),
-        );
+              Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Divider(height: 2.0, color: Colors.black),
+              ),
+            ],
+          );
+        } else {
+          final int rowIndex = index - 1; // ลบ 1 เพื่อปรับให้ตรงกับรายการเสื้อ
+          final int startIndex = rowIndex * 2;
+          final int endIndex = startIndex + 2;
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children:
+                    _tshirtList.sublist(startIndex, endIndex).map((tshirt) {
+                  return Expanded(
+                    child: Card(
+                      margin: EdgeInsets.all(8.0),
+                      elevation: 2.0,
+                      child: Column(
+                        children: [
+                          ListTile(
+                            title: Column(
+                              children: [
+                                AspectRatio(
+                                  aspectRatio: 1,
+                                  child: Image.network(
+                                    "${tshirt.img}",
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                SizedBox(height: 10.0),
+                                Text("${tshirt.name}"),
+                                SizedBox(height: 10.0),
+                                Text("${tshirt.price} THB")
+                              ],
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TshirtInfo(),
+                                  settings: RouteSettings(arguments: tshirt),
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
+          );
+        }
       },
     );
   }
@@ -94,7 +127,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("T-Shirt"),
+        title: const Text("Home"),
         backgroundColor: Color(0xFF2E2E2E),
       ),
       drawer: SideMenu(),
