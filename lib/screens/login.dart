@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
             color: Color(0xFF2E2E2E) // กำหนดสีพื้นหลังของ Container
             ),
         child: Text(
-          'T_Shop',
+          'T_Sh0p',
           style: TextStyle(color: Colors.white, fontSize: 60.0 // กำหนดสีข้อความ
               ),
         ),
