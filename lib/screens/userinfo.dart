@@ -57,6 +57,7 @@ class UserInfo extends StatelessWidget {
                           padding: const EdgeInsets.all(20.0)),
                       child: Text("Edit Profile"),
                     ),
+                    SizedBox(width: 10.0),
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
