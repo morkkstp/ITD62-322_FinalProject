@@ -11,8 +11,8 @@ class TshirtInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var tshirt = ModalRoute.of(context)!.settings.arguments as Tshirt;
-    var imgts = tshirt.img;
-    imgts ??=
+    var imgUrl = tshirt.img;
+    imgUrl ??=
         'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
 
     return Scaffold(
@@ -23,7 +23,7 @@ class TshirtInfo extends StatelessWidget {
         child: Card(
           child: ListView(
             children: [
-              AspectRatio(aspectRatio: 16 / 9, child: Image.network(imgts)),
+              AspectRatio(aspectRatio: 16 / 9, child: Image.network(imgUrl)),
               ListTile(
                   title: Text("T-Shirt Name"),
                   subtitle: Text("${tshirt.name}")),

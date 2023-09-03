@@ -44,11 +44,19 @@ class _HomeState extends State<Home> {
         itemCount: _tshirtList.length,
         itemBuilder: (context, index) {
           Tshirt tshirt = _tshirtList[index];
+          var imgUrl = tshirt.img;
+          imgUrl ??=
+              'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
+
           return Dismissible(
             key: UniqueKey(),
             direction: DismissDirection.endToStart,
             child: Card(
                 child: ListTile(
+                    leading: AspectRatio(
+                      aspectRatio: 1.0,
+                      child: Image.network(imgUrl),
+                    ),
                     title: Text("${tshirt.name}"),
                     subtitle: Text("${tshirt.price} THB"),
                     onTap: () {
