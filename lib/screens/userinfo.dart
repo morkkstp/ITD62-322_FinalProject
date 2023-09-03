@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:finalproject_t_shop/models/users.dart';
+import 'package:finalproject_t_shop/screens/login.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
 import 'package:finalproject_t_shop/screens/useredit.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,13 @@ class UserInfo extends StatelessWidget {
                     ),
                     SizedBox(width: 10.0),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Login(),
+                                settings: RouteSettings(arguments: user)));
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
                           padding: const EdgeInsets.all(20.0)),
