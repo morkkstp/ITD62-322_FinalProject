@@ -105,6 +105,15 @@ class _TshirtInfoState extends State<TshirtInfo> {
     );
   }
 
+  Widget addGoodsButton() {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.green, padding: const EdgeInsets.all(20.0)),
+      child: Text("Order"),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var tshirt = ModalRoute.of(context)!.settings.arguments as Tshirt;
@@ -120,12 +129,17 @@ class _TshirtInfoState extends State<TshirtInfo> {
     }
     return Scaffold(
       appBar: AppBar(
-          title: Text("${tshirt.name}"), backgroundColor: Color(0xFF2E2E2E)),
+          title: Text("T-Shirt Detail"), backgroundColor: Color(0xFF2E2E2E)),
       body: Container(
         margin: const EdgeInsets.all(10),
         child: Card(
           child: ListView(
             children: [
+              ListTile(
+                  title: Text(
+                "${tshirt.name}",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              )),
               AspectRatio(aspectRatio: 16 / 9, child: Image.network(imgUrl)),
               ListTile(
                   title: Text("T-Shirt Name"),
@@ -143,6 +157,7 @@ class _TshirtInfoState extends State<TshirtInfo> {
               ListTile(
                 subtitle: countTshirt(),
               ),
+              ListTile(subtitle: addGoodsButton()),
             ],
           ),
         ),
