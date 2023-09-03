@@ -28,7 +28,7 @@ class _LoginState extends State<Login> {
     print(login_result.length);
     if (login_result.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("username or password invalid")));
+          SnackBar(content: Text("Username or Password is Invalid")));
     } else {
       Configure.login = login_result[0];
       Navigator.pushNamed(context, Home.routeName);
