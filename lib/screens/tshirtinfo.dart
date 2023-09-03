@@ -19,6 +19,23 @@ class _TshirtInfoState extends State<TshirtInfo> {
   late Tshirt tshirt;
   late Order order;
 
+  int _tshirtCount = 1;
+
+  void _incrementTshirt() {
+    setState(() {
+      _tshirtCount++;
+    });
+  }
+
+  void _decrementTshirt() {
+    if (_tshirtCount > 1) {
+      // เช็คว่า _tshirtCount มากกว่า 1
+      setState(() {
+        _tshirtCount--;
+      });
+    }
+  }
+
   Widget chooseSize() {
     var initGen = "S";
     try {
@@ -41,6 +58,51 @@ class _TshirtInfoState extends State<TshirtInfo> {
           order.size = value;
         },
         onSaved: (newValue) => order.size);
+  }
+
+  Widget countTshirt() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        InkWell(
+          onTap: _decrementTshirt,
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.grey[300],
+            ),
+            padding: EdgeInsets.all(12.0),
+            child: Icon(
+              Icons.remove,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        SizedBox(width: 20.0),
+        Text(
+          '$_tshirtCount',
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(width: 20.0),
+        InkWell(
+          onTap: _incrementTshirt,
+          child: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.grey[300],
+            ),
+            padding: EdgeInsets.all(12.0),
+            child: Icon(
+              Icons.add,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   @override
@@ -81,7 +143,8 @@ class _TshirtInfoState extends State<TshirtInfo> {
               ListTile(
                 title: Text(
                     "Rating: ${tshirt.rating!.rate}/5 of ${tshirt.rating!.count}"),
-              )
+              ),
+              countTshirt()
             ],
           ),
         ),

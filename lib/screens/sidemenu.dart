@@ -28,12 +28,15 @@ class SideMenu extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(accountFN),
-            accountEmail: Text(accountLN),
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: NetworkImage(accountUrl),
-              backgroundColor: Color(0xFF2E2E2E),
+            accountName: Text(
+              accountFN,
+              style: TextStyle(fontSize: 15),
             ),
+            accountEmail: Text(accountLN, style: TextStyle(fontSize: 15)),
+            currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(accountUrl),
+                backgroundColor: Color(0xFF2E2E2E),
+                radius: 30.0),
             decoration: BoxDecoration(
                 color: Color(0xFF2E2E2E) // กำหนดสีพื้นหลังของ Container
                 ),

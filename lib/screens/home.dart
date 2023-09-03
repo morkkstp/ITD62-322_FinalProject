@@ -95,9 +95,14 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 SizedBox(height: 10.0),
-                                Text("${tshirt.name}"),
+                                Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text("${tshirt.name}")),
                                 SizedBox(height: 10.0),
-                                Text("${tshirt.price} THB")
+                                Align(
+                                  alignment: Alignment.centerRight, // ชิดซ้าย
+                                  child: Text("${tshirt.price} THB"),
+                                ),
                               ],
                             ),
                             onTap: () {
