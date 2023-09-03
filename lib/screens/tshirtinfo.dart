@@ -140,7 +140,9 @@ class _TshirtInfoState extends State<TshirtInfo> {
                 title: Text("T-Shirt Size"),
                 subtitle: chooseSize(),
               ),
-              countTshirt()
+              ListTile(
+                subtitle: countTshirt(),
+              ),
             ],
           ),
         ),
