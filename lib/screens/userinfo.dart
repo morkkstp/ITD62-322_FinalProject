@@ -17,7 +17,7 @@ class UserInfo extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-            title: const Text("User Info"), backgroundColor: Color(0xFF2E2E2E)),
+            title: const Text("Profile"), backgroundColor: Color(0xFF2E2E2E)),
         drawer: SideMenu(),
         body: Container(
             margin: const EdgeInsets.all(10),
@@ -25,8 +25,8 @@ class UserInfo extends StatelessWidget {
               children: [
                 ListTile(
                     title: Center(
-                        child:
-                            Text("Profile", style: TextStyle(fontSize: 30)))),
+                        child: Text("Hello ${user.firstname}",
+                            style: TextStyle(fontSize: 30)))),
                 ListTile(
                     title: Text("Username"),
                     subtitle: Text("${user.username}")),
@@ -44,34 +44,41 @@ class UserInfo extends StatelessWidget {
                     title: Text("Address"), subtitle: Text("${user.address}")),
                 SizedBox(height: 20.0),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => UserEdit(),
-                                settings: RouteSettings(arguments: user)));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UserEdit(),
+                            settings: RouteSettings(arguments: user),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.grey,
-                          padding: const EdgeInsets.all(20.0)),
+                        backgroundColor: Colors.grey[700],
+                        padding: EdgeInsets.all(20.0),
+                      ),
                       child: Text("Edit Profile"),
                     ),
-                    SizedBox(width: 10.0),
+                    SizedBox(width: 10.0), // ระยะห่างระหว่างปุ่ม
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Login(),
-                                settings: RouteSettings(arguments: user)));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Login(),
+                            settings: RouteSettings(arguments: user),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          padding: const EdgeInsets.all(20.0)),
+                        backgroundColor: Colors.red,
+                        padding: EdgeInsets.all(20.0),
+                      ),
                       child: Text("Logout"),
-                    )
+                    ),
                   ],
                 )
               ],

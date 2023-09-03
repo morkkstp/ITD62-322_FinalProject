@@ -44,6 +44,7 @@ class _UserEditState extends State<UserEdit> {
       initialValue: user.username,
       decoration:
           InputDecoration(labelText: "Username:", border: OutlineInputBorder()),
+      readOnly: true,
       validator: (value) {
         if (value!.isEmpty) {
           return "This field is required";
@@ -167,6 +168,7 @@ class _UserEditState extends State<UserEdit> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 20),
                 usernameEdit(),
                 SizedBox(height: 20),
                 passwordEdit(),
@@ -179,7 +181,12 @@ class _UserEditState extends State<UserEdit> {
                 SizedBox(height: 20),
                 addressEdit(),
                 SizedBox(height: 20),
-                submitButton()
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    submitButton(),
+                  ],
+                )
               ],
             )),
       ),

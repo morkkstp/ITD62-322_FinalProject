@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late Widget mainBody;
+  Widget mainBody = CircularProgressIndicator();
   List<Tshirt> _tshirtList = [];
 
   @override
@@ -64,6 +64,7 @@ class _HomeState extends State<Home> {
                               fit: BoxFit.cover,
                             ),
                           ),
+                          SizedBox(height: 10.0),
                           Text("${tshirt.name}"),
                           SizedBox(height: 10.0),
                           Text("${tshirt.price} THB"),
@@ -97,7 +98,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Color(0xFF2E2E2E),
       ),
       drawer: SideMenu(),
-      body: mainBody != null ? mainBody : CircularProgressIndicator(),
+      body: mainBody,
     );
   }
 }
