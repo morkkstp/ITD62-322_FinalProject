@@ -4,7 +4,6 @@ import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
 import 'package:finalproject_t_shop/screens/useredit.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class UserInfo extends StatelessWidget {
   static const routeName = "/profile";
@@ -14,17 +13,6 @@ class UserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = ModalRoute.of(context)!.settings.arguments as Users;
-
-    void logout() async {
-      // อาจจะต้องทำการล้างข้อมูลการเข้าสู่ระบบที่ถูกเก็บไว้ เช่น token, session, หรือข้อมูลผู้ใช้
-
-      // ตัวอย่างการใช้งาน shared_preferences เพื่อล้างข้อมูล
-      final prefs = await SharedPreferences.getInstance();
-      prefs.remove('user_token');
-
-      // หลังจากลบข้อมูลเรียบร้อยแล้ว คุณสามารถนำผู้ใช้ไปยังหน้า Login หรือหน้าอื่น ๆ ตามความต้องการ
-      Navigator.of(context).pushReplacementNamed('/login'); // ตัวอย่างเท่านี้
-    }
 
     return Scaffold(
         appBar: AppBar(
@@ -70,9 +58,7 @@ class UserInfo extends StatelessWidget {
                       child: Text("Edit Profile"),
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        logout();
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
                           padding: const EdgeInsets.all(20.0)),
