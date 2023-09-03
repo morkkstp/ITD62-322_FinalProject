@@ -105,7 +105,7 @@ class _TshirtInfoState extends State<TshirtInfo> {
     );
   }
 
-  Widget addGoodsButton() {
+  Widget addOrderButton() {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
@@ -157,7 +157,7 @@ class _TshirtInfoState extends State<TshirtInfo> {
               ListTile(
                 subtitle: countTshirt(),
               ),
-              ListTile(subtitle: addGoodsButton()),
+              ListTile(subtitle: addOrderButton()),
             ],
           ),
         ),
