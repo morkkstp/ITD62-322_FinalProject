@@ -39,22 +39,6 @@ class _UserEditState extends State<UserEdit> {
     }
   }
 
-  Widget usernameEdit() {
-    return TextFormField(
-      initialValue: user.username,
-      decoration:
-          InputDecoration(labelText: "Username:", border: OutlineInputBorder()),
-      readOnly: true,
-      validator: (value) {
-        if (value!.isEmpty) {
-          return "This field is required";
-        }
-        return null;
-      },
-      onSaved: (newValue) => user.username = newValue,
-    );
-  }
-
   Widget passwordEdit() {
     return TextFormField(
       initialValue: user.password,
@@ -168,8 +152,6 @@ class _UserEditState extends State<UserEdit> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 20),
-                usernameEdit(),
                 SizedBox(height: 20),
                 passwordEdit(),
                 SizedBox(height: 20),

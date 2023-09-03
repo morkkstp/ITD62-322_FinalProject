@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print, unused_local_variable
 
 import 'package:finalproject_t_shop/models/config.dart';
+import 'package:finalproject_t_shop/models/order.dart';
 import 'package:finalproject_t_shop/models/tshirt.dart';
 import 'package:flutter/material.dart';
 
@@ -16,31 +17,31 @@ class TshirtInfo extends StatefulWidget {
 class _TshirtInfoState extends State<TshirtInfo> {
   // Tshirt tshirt = Tshirt();
   late Tshirt tshirt;
+  late Order order;
 
-  // Widget chooseSize() {
-  //   var initGen = "S";
-  //   try {
-  //     if (tshirt.size!.isEmpty) {
-  //       initGen = tshirt.size!;
-  //     }
-  //   } catch (e) {
-  //     initGen = "None";
-  //   }
-
-  //   return DropdownButtonFormField(
-  //       decoration: InputDecoration(labelText: "Size"),
-  //       value: 'S',
-  //       items: Configure.size.map((String val) {
-  //         return DropdownMenuItem(
-  //           value: val,
-  //           child: Text(val),
-  //         );
-  //       }).toList(),
-  //       onChanged: (value) {
-  //         tshirt.size = value;
-  //       },
-  //       onSaved: (newValue) => tshirt.size);
-  // }
+  Widget chooseSize() {
+    var initGen = "S";
+    try {
+      if (order.size!.isEmpty) {
+        initGen = order.size!;
+      }
+    } catch (e) {
+      initGen = "S";
+    }
+    return DropdownButtonFormField(
+        decoration: InputDecoration(border: OutlineInputBorder()),
+        value: 'S',
+        items: Configure.size.map((String val) {
+          return DropdownMenuItem(
+            value: val,
+            child: Text(val),
+          );
+        }).toList(),
+        onChanged: (value) {
+          order.size = value;
+        },
+        onSaved: (newValue) => order.size);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +74,10 @@ class _TshirtInfoState extends State<TshirtInfo> {
               ListTile(
                   title: Text("T-Shirt Price"),
                   subtitle: Text("${tshirt.price} THB")),
-              ListTile(title: Text("T-Shirt Size")),
-              // chooseSize(),
+              ListTile(
+                title: Text("T-Shirt Size"),
+                subtitle: chooseSize(),
+              )
             ],
           ),
         ),
