@@ -4,7 +4,7 @@ import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/tshirt.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
-import 'package:finalproject_t_shop/screens/tshirtinfo.dart';
+import 'package:finalproject_t_shop/tshirt/tshirtinfo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

@@ -3,7 +3,7 @@
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/home.dart';
-import 'package:finalproject_t_shop/screens/userinfo.dart';
+import 'package:finalproject_t_shop/user/userinfo.dart';
 import 'package:flutter/material.dart';
 
 class SideMenu extends StatelessWidget {

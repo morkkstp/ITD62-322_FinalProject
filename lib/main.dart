@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:finalproject_t_shop/screens/tshirtinfo.dart';
-import 'package:finalproject_t_shop/screens/userinfo.dart';
+import 'package:finalproject_t_shop/tshirt/tshirtinfo.dart';
+import 'package:finalproject_t_shop/user/userinfo.dart';
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
 import 'screens/login.dart';
