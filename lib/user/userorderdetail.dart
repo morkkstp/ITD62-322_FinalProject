@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:finalproject_t_shop/models/tshirt.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:flutter/material.dart';
 
