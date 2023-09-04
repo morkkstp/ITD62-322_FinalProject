@@ -56,7 +56,7 @@ class UserInfo extends StatelessWidget {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[700],
+                        backgroundColor: Colors.grey,
                         padding: EdgeInsets.all(12.0),
                       ),
                       child: Text("Edit Profile"),
