@@ -143,11 +143,13 @@ class _UserEditState extends State<UserEdit> {
     }
     return Scaffold(
       appBar: AppBar(
-          title: const Text("Edit Profile"),
-          backgroundColor: Color(0xFF2E2E2E)),
-      body: Container(
-        margin: EdgeInsets.all(10),
-        child: Form(
+        title: const Text("Edit Profile"),
+        backgroundColor: Color(0xFF2E2E2E),
+      ),
+      body: ListView(
+        padding: EdgeInsets.all(10),
+        children: [
+          Form(
             key: _formkey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,9 +170,11 @@ class _UserEditState extends State<UserEdit> {
                   children: [
                     submitButton(),
                   ],
-                )
+                ),
               ],
-            )),
+            ),
+          ),
+        ],
       ),
     );
   }
