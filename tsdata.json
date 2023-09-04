@@ -33,7 +33,9 @@
       "lastname": "Maverick",
       "phone": "0627654321",
       "address": "Thung Song, Nakhon Si Thammarat",
-      "myorder": [{}]
+      "myorder": [
+        {}
+      ]
     },
     {
       "id": 3,
@@ -43,7 +45,9 @@
       "lastname": "Jude",
       "phone": "0629876543",
       "address": "Sichon, Nakhon Si Thammarat",
-      "myorder": [{}]
+      "myorder": [
+        {}
+      ]
     },
     {
       "id": 4,
@@ -53,7 +57,9 @@
       "lastname": "Roman",
       "phone": "0623456789",
       "address": "Khanom, Nakhon Si Thammarat",
-      "myorder": [{}]
+      "myorder": [
+        {}
+      ]
     }
   ],
   "tshirt": [

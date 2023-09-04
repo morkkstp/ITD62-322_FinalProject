@@ -110,7 +110,7 @@ class _TshirtInfoState extends State<TshirtInfo> {
   }
 
   Future<void> addOrder(BuildContext context, order) async {
-    var url = Uri.http(Configure.server, '/order');
+    var url = Uri.http(Configure.server, '/tshirt');
     var resp = await http.post(url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -118,10 +118,10 @@ class _TshirtInfoState extends State<TshirtInfo> {
         body: jsonEncode(order.toJson()));
     var rs = orderFromJson("[${resp.body}]");
     print(rs[0].toJson());
-    // if (rs.length > 1) {
-    //   Navigator.pushNamed(context, '/order', arguments: order);
-    //   print(order.toString());
-    // }
+    if (rs.length > 1) {
+      Navigator.pushNamed(context, '/order', arguments: order);
+      print(order.toString());
+    }
     return;
   }
 
