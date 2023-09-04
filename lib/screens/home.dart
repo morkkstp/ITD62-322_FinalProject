@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
                 child: Divider(height: 2.0, color: Colors.black),
               ),
             ],
