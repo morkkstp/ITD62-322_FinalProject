@@ -41,8 +41,8 @@ class _HomeState extends State<Home> {
 
   Widget showTshirt() {
     return ListView.builder(
-      itemCount: (_tshirtList.length / 2).ceil() +
-          1, // +1 เพื่อให้มีรายการเสื้อและหัวข้อ
+      // +1 เพื่อให้มีรายการเสื้อและหัวข้อ
+      itemCount: (_tshirtList.length / 2).ceil() + 1,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
           // แสดงหัวข้อ "T-Shirt Collection" และเส้นขั้น
