@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable
+// ignore_for_file: prefer_const_constructors, unused_local_variable, avoid_print, unnecessary_type_check, use_build_context_synchronously, unnecessary_null_comparison
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -120,6 +120,9 @@ class _TshirtInfoState extends State<TshirtInfo> {
       body: jsonEncode(order.toJson()),
     );
     var rs = orderFromJson("[${resp.body}]");
+    if (rs.length == 1) {
+      Navigator.pushNamed(context, '/addtocart');
+    }
     return;
   }
 

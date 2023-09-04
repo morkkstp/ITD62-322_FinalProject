@@ -43,16 +43,15 @@ class UserOrderDetail extends StatelessWidget {
                       subtitle: Text("${user.myorder?[0].totalprice} THB")),
                   ListTile(
                       title: Text("Firstname"),
-                      subtitle: Text("${user.myorder?[0].firstname}")),
+                      subtitle: Text("${user.firstname}")),
                   ListTile(
                       title: Text("Lastname"),
-                      subtitle: Text("${user.myorder?[0].lastname}")),
+                      subtitle: Text("${user.lastname}")),
                   ListTile(
-                      title: Text("Phone"),
-                      subtitle: Text("${user.myorder?[0].phone}")),
+                      title: Text("Phone"), subtitle: Text("${user.phone}")),
                   ListTile(
                       title: Text("Address"),
-                      subtitle: Text("${user.myorder?[0].address}")),
+                      subtitle: Text("${user.address}")),
                 ],
               ),
             ),

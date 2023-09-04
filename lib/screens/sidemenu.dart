@@ -2,6 +2,7 @@
 
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/users.dart';
+import 'package:finalproject_t_shop/order/cart.dart';
 import 'package:finalproject_t_shop/screens/home.dart';
 import 'package:finalproject_t_shop/screens/login.dart';
 import 'package:finalproject_t_shop/user/userinfo.dart';
@@ -57,6 +58,16 @@ class SideMenu extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => UserInfo(),
+                        settings: RouteSettings(arguments: user)));
+              }),
+          ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text("Cart"),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => addToCart(),
                         settings: RouteSettings(arguments: user)));
               }),
           ListTile(
