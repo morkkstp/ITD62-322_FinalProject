@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
       },
       style: ElevatedButton.styleFrom(
           backgroundColor: Color(0xFF2E2E2E),
-          padding: const EdgeInsets.all(20.0)),
+          padding: const EdgeInsets.all(12.0)),
       child: Text("Login"),
     );
   }
