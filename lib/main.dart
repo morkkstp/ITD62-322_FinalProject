@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:finalproject_t_shop/order/cart.dart';
 import 'package:finalproject_t_shop/tshirt/tshirtinfo.dart';
 import 'package:finalproject_t_shop/user/userinfo.dart';
 import 'package:finalproject_t_shop/user/userorder.dart';
@@ -25,7 +26,8 @@ class MainApp extends StatelessWidget {
         '/login': (context) => const Login(),
         '/profile': (context) => const UserInfo(),
         '/tshirt': (context) => const TshirtInfo(),
-        '/order': (context) => const UserOrder()
+        '/order': (context) => const UserOrder(),
+        '/addtocart': (context) => const addToCart()
       },
     );
   }
