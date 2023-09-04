@@ -18,7 +18,7 @@ class UserInfo extends StatelessWidget {
         appBar: AppBar(
             title: const Text("Profile"), backgroundColor: Color(0xFF2E2E2E)),
         drawer: SideMenu(),
-        body: Container(
+        body: Card(
             margin: const EdgeInsets.all(10),
             child: Column(
               children: [
