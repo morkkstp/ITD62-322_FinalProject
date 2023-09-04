@@ -2,6 +2,7 @@
 
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
+import 'package:finalproject_t_shop/user/userorderdetail.dart';
 import 'package:flutter/material.dart';
 
 class UserOrder extends StatelessWidget {
@@ -25,26 +26,49 @@ class UserOrder extends StatelessWidget {
             imgorder ??=
                 'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg';
             return Card(
-              child: ListTile(
-                title: Text("Product Name: ${user.myorder?[0].name ?? 'N/A'}"),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Price: ${user.myorder?[0].price ?? 'N/A'}"),
-                    Text("Size: ${user.myorder?[0].size ?? 'N/A'}"),
-                    Text("Count: ${user.myorder?[0].count ?? 'N/A'}"),
-                    Text(
-                        "Total Price: ${user.myorder?[0].totalprice ?? 'N/A'}"),
-                    Text("Firstname: ${user.myorder?[0].firstname ?? 'N/A'}"),
-                    Text("Lastname: ${user.myorder?[0].lastname ?? 'N/A'}"),
-                    Text("Phone: ${user.myorder?[0].phone ?? 'N/A'}"),
-                    Text("Address: ${user.myorder?[0].address ?? 'N/A'}"),
-                  ],
-                ),
-                leading: AspectRatio(
-                  aspectRatio: 1,
-                  child: Image.network(imgorder),
-                ),
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Text(
+                      "#${user.myorder?[0].id} - ${user.myorder?[0].name ?? 'N/A'}",
+                    ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 5),
+                        Text(
+                            "Price: ${user.myorder?[0].price != null ? '${user.myorder?[0].price} THB' : 'N/A'}"),
+                        SizedBox(height: 5),
+                        Text("Size: ${user.myorder?[0].size ?? 'N/A'}"),
+                        SizedBox(height: 5),
+                        Text("Count: ${user.myorder?[0].count ?? 'N/A'}"),
+                        SizedBox(height: 5),
+                        Text(
+                            "Total Price: ${user.myorder?[0].totalprice != null ? '${user.myorder?[0].totalprice} THB' : 'N/A'}"),
+                        SizedBox(height: 5),
+                      ],
+                    ),
+                    leading: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.network(imgorder),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => UserOrderDetail(),
+                          settings: RouteSettings(arguments: user),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text("View Order Detail",
+                            style: TextStyle(color: Colors.blue))),
+                  ),
+                ],
               ),
             );
           },
