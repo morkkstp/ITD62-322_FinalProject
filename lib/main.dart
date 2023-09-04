@@ -2,6 +2,7 @@
 
 import 'package:finalproject_t_shop/tshirt/tshirtinfo.dart';
 import 'package:finalproject_t_shop/user/userinfo.dart';
+import 'package:finalproject_t_shop/user/userorder.dart';
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
 import 'screens/login.dart';
@@ -24,6 +25,7 @@ class MainApp extends StatelessWidget {
         '/login': (context) => const Login(),
         '/profile': (context) => const UserInfo(),
         '/tshirt': (context) => const TshirtInfo(),
+        '/order': (context) => const UserOrder()
       },
     );
   }

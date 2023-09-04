@@ -12,7 +12,6 @@ class UserOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var user = ModalRoute.of(context)!.settings.arguments as Users;
-    Myorder myorder = Myorder();
 
     return Scaffold(
         appBar: AppBar(
@@ -24,7 +23,7 @@ class UserOrder extends StatelessWidget {
           itemBuilder: (context, index) {
             var imgorder = user.myorder![index].img;
             imgorder ??=
-                'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
+                'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg';
             return Card(
               child: ListTile(
                 title: Text("Product Name: ${user.myorder?[0].name ?? 'N/A'}"),
