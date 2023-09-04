@@ -3,6 +3,7 @@
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/home.dart';
+import 'package:finalproject_t_shop/screens/login.dart';
 import 'package:finalproject_t_shop/user/userinfo.dart';
 import 'package:finalproject_t_shop/user/userorder.dart';
 import 'package:flutter/material.dart';
@@ -69,6 +70,25 @@ class SideMenu extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => UserOrder(),
                       settings: RouteSettings(arguments: user)));
+            },
+          ),
+          Spacer(), // เพิ่ม Spacer เพื่อช่วยให้ปุ่ม Logout อยู่ด้านล่างสุด
+          ListTile(
+            // กำหนดพื้นหลังเป็นสีแดง
+            tileColor: Colors.red,
+            leading: Icon(Icons.logout,
+                color: Colors.white), // ใส่ไอคอนและสีของไอคอนเป็นขาว
+            title: Text("Logout",
+                style: TextStyle(
+                    color: Colors.white)), // ใส่ข้อความและสีข้อความเป็นขาว
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Login(),
+                  settings: RouteSettings(arguments: user),
+                ),
+              );
             },
           )
         ],

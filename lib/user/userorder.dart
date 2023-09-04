@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_string_interpolations
 
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
@@ -11,40 +11,44 @@ class UserOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var user = ModalRoute.of(context)!.settings.arguments as Users.Myorder;
-
-// ตัวอย่างการเข้าถึงข้อมูลใน array
-    var firstOrder = user.orders[0]; // เข้าถึงอันแรกใน array
-    var secondOrder = user.orders[1]; // เข้าถึงอันที่สองใน array
+    var user = ModalRoute.of(context)!.settings.arguments as Users;
+    Myorder myorder = Myorder();
 
     return Scaffold(
         appBar: AppBar(
             title: const Text("My Order"), backgroundColor: Color(0xFF2E2E2E)),
         drawer: SideMenu(),
-        body: Container(
-            margin: const EdgeInsets.all(10),
-            child: Column(
-              children: [
-                ListTile(
-                    title: Center(
-                        child: Text("Order of ${user.firstname}",
-                            style: TextStyle(fontSize: 30)))),
-                ListTile(
-                    title: Text("Username"),
-                    subtitle: Text("${user.username}")),
-                ListTile(
-                    title: Text("Password"),
-                    subtitle: Text("${user.password}")),
-                ListTile(
-                    title: Text("Firstname"),
-                    subtitle: Text("${user.firstname}")),
-                ListTile(
-                    title: Text("Lastname"),
-                    subtitle: Text("${user.lastname}")),
-                ListTile(title: Text("Phone"), subtitle: Text("${user.phone}")),
-                ListTile(
-                    title: Text("Address"), subtitle: Text("${user.address}")),
-              ],
-            )));
+        body: ListView.builder(
+          padding: const EdgeInsets.all(10),
+          itemCount: user.myorder!.length,
+          itemBuilder: (context, index) {
+            var imgorder = user.myorder![index].img;
+            imgorder ??=
+                'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
+            return Card(
+              child: ListTile(
+                title: Text("Product Name: ${user.myorder?[0].name ?? 'N/A'}"),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Price: ${user.myorder?[0].price ?? 'N/A'}"),
+                    Text("Size: ${user.myorder?[0].size ?? 'N/A'}"),
+                    Text("Count: ${user.myorder?[0].count ?? 'N/A'}"),
+                    Text(
+                        "Total Price: ${user.myorder?[0].totalprice ?? 'N/A'}"),
+                    Text("Firstname: ${user.myorder?[0].firstname ?? 'N/A'}"),
+                    Text("Lastname: ${user.myorder?[0].lastname ?? 'N/A'}"),
+                    Text("Phone: ${user.myorder?[0].phone ?? 'N/A'}"),
+                    Text("Address: ${user.myorder?[0].address ?? 'N/A'}"),
+                  ],
+                ),
+                leading: AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.network(imgorder),
+                ),
+              ),
+            );
+          },
+        ));
   }
 }

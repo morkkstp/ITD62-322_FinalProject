@@ -58,26 +58,9 @@ class UserInfo extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[700],
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(12.0),
                       ),
                       child: Text("Edit Profile"),
-                    ),
-                    SizedBox(width: 10.0), // ระยะห่างระหว่างปุ่ม
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Login(),
-                            settings: RouteSettings(arguments: user),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        padding: EdgeInsets.all(20.0),
-                      ),
-                      child: Text("Logout"),
                     ),
                   ],
                 )
