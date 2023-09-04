@@ -135,14 +135,9 @@ class _TshirtInfoState extends State<TshirtInfo> {
         child: Card(
           child: ListView(
             children: [
-              ListTile(
-                  title: Text(
-                "${tshirt.name}",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              )),
               AspectRatio(aspectRatio: 16 / 9, child: Image.network(imgUrl)),
               ListTile(
-                  title: Text("T-Shirt Name"),
+                  title: Text("T-Shirt Name", style: TextStyle(fontSize: 15)),
                   subtitle: Text("${tshirt.name}")),
               ListTile(
                   title: Text("T-Shirt Description"),
@@ -154,9 +149,9 @@ class _TshirtInfoState extends State<TshirtInfo> {
                 title: Text("T-Shirt Size"),
                 subtitle: chooseSize(),
               ),
-              ListTile(
-                subtitle: countTshirt(),
-              ),
+              SizedBox(height: 10),
+              ListTile(subtitle: countTshirt()),
+              SizedBox(height: 10),
               ListTile(subtitle: addOrderButton()),
             ],
           ),
