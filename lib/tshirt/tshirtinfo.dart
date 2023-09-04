@@ -233,35 +233,6 @@ class _TshirtInfoState extends State<TshirtInfo> {
     tshirt = Tshirt();
   }
 
-  void _incrementTshirt() {
-    setState(() {
-      _tshirtCount++;
-    });
-  }
-
-  void _decrementTshirt() {
-    if (_tshirtCount > 1) {
-      setState(() {
-        _tshirtCount--;
-      });
-    }
-  }
-
-  Future<void> addOrder(BuildContext context, Order order) async {
-    var url = Uri.http(Configure.server, '/order');
-    var resp = await http.post(
-      url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(order.toJson()),
-    );
-    var rs = orderFromJson("[${resp.body}]");
-    print(order.toJson());
-    print(rs[0].toJson());
-    return;
-  }
-
   Widget chooseSize() {
     return DropdownButtonFormField(
       decoration: InputDecoration(border: OutlineInputBorder()),
@@ -281,6 +252,20 @@ class _TshirtInfoState extends State<TshirtInfo> {
   }
 
   Widget countTshirt() {
+    void _incrementTshirt() {
+      setState(() {
+        _tshirtCount++;
+      });
+    }
+
+    void _decrementTshirt() {
+      if (_tshirtCount > 1) {
+        setState(() {
+          _tshirtCount--;
+        });
+      }
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -323,6 +308,21 @@ class _TshirtInfoState extends State<TshirtInfo> {
         ),
       ],
     );
+  }
+
+  Future<void> addOrder(BuildContext context, Order order) async {
+    var url = Uri.http(Configure.server, '/order');
+    var resp = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(order.toJson()),
+    );
+    var rs = orderFromJson("[${resp.body}]");
+    print(order.toJson());
+    print(rs[0].toJson());
+    return;
   }
 
   Widget addOrderButton(BuildContext context) {
