@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
                                     child: Text("${tshirt.name}")),
                                 SizedBox(height: 10.0),
                                 Align(
-                                  alignment: Alignment.centerRight, // ชิดซ้าย
+                                  alignment: Alignment.centerRight,
                                   child: Text("${tshirt.price} THB"),
                                 ),
                               ],

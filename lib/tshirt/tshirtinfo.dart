@@ -41,7 +41,7 @@ class _TshirtInfoState extends State<TshirtInfo> {
 
     return DropdownButtonFormField(
         decoration: InputDecoration(border: OutlineInputBorder()),
-        value: 'S',
+        value: initGen,
         items: Configure.size.map((String val) {
           return DropdownMenuItem(value: val, child: Text(val));
         }).toList(),
@@ -189,7 +189,7 @@ class _TshirtInfoState extends State<TshirtInfo> {
                 SizedBox(height: 10),
                 ListTile(subtitle: countTshirt()),
                 SizedBox(height: 10),
-                ListTile(subtitle: addOrderButton(context)),
+                ListTile(subtitle: addOrderButton(context))
               ],
             ),
           ),
