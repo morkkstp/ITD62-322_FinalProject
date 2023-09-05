@@ -7,6 +7,7 @@ import 'package:finalproject_t_shop/models/order.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
 import 'package:finalproject_t_shop/tshirt/tshirtedit.dart';
+import 'package:finalproject_t_shop/user/userorder.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,7 +25,7 @@ class _addToCartState extends State<addToCart> {
   Users user = Configure.login;
   late Order order;
   Widget mainBody = Container();
-  List<Order> _orderList = [];
+  List<Order> orderList = [];
 
   @override
   void initState() {
@@ -39,7 +40,7 @@ class _addToCartState extends State<addToCart> {
     var url = Uri.http(Configure.server, "order");
     var resp = await http.get(url);
     setState(() {
-      _orderList = orderFromJson(resp.body);
+      orderList = orderFromJson(resp.body);
       mainBody = showUsers();
     });
     return;
@@ -52,8 +53,8 @@ class _addToCartState extends State<addToCart> {
     return;
   }
 
-  Future<void> addOrder(BuildContext context, Users user) async {
-    var url = Uri.http(Configure.server, '/users/${user.id}');
+  Future<void> addOrder(BuildContext context, user) async {
+    var url = Uri.http(Configure.server, '/users/${user.id}}');
     var resp = await http.post(
       url,
       headers: <String, String>{
@@ -73,19 +74,18 @@ class _addToCartState extends State<addToCart> {
       onPressed: () {
         if (_formkey.currentState!.validate()) {
           _formkey.currentState!.save();
-          user.myorder![0].name = order.name;
-          user.myorder![0].price = order.price;
-          user.myorder![0].img = order.img;
-          user.myorder![0].count = order.count;
-          user.myorder![0].totalprice = (order.price! * order.count!);
-          user.myorder![0].size = order.size;
-          print(user.myorder![0].toJson());
-          addOrder(context, user);
+          user.myorder?[0].name = order.name;
+          user.myorder?[0].price = order.price;
+          user.myorder?[0].size = order.size;
+          user.myorder?[0].img = order.img;
+          user.myorder?[0].count = order.count;
+          user.myorder?[0].totalprice = order.totalprice;
+          addOrder(context, order);
         }
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(10.0),
       ),
       child: Text("Order"),
     );
@@ -93,9 +93,9 @@ class _addToCartState extends State<addToCart> {
 
   Widget showUsers() {
     return ListView.builder(
-        itemCount: _orderList.length,
+        itemCount: orderList.length,
         itemBuilder: (context, index) {
-          Order order = _orderList[index];
+          Order order = orderList[index];
           var imgUrl = order.img ??
               'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
           return Dismissible(
@@ -140,6 +140,8 @@ class _addToCartState extends State<addToCart> {
                           child: Text('Edit',
                               style: TextStyle(color: Colors.blue)),
                         ),
+                        SizedBox(height: 5),
+                        addOrderButton(context),
                       ],
                     ))),
             onDismissed: (direction) {
@@ -164,12 +166,6 @@ class _addToCartState extends State<addToCart> {
       ),
       drawer: SideMenu(),
       body: mainBody,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          addOrderButton(context);
-        },
-        child: const Icon(Icons.person_add_alt_1),
-      ),
     );
   }
 }
