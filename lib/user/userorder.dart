@@ -30,21 +30,21 @@ class UserOrder extends StatelessWidget {
                 children: [
                   ListTile(
                     title: Text(
-                      "#${user.myorder?[0].id} - ${user.myorder?[0].name ?? 'N/A'}",
+                      "#${user.myorder?[index].id} - ${user.myorder?[index].name ?? 'N/A'}",
                     ),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 5),
                         Text(
-                            "Price: ${user.myorder?[0].price != null ? '${user.myorder?[0].price} THB' : 'N/A'}"),
+                            "Price: ${user.myorder?[index].price != null ? '${user.myorder?[index].price} THB' : 'N/A'}"),
                         SizedBox(height: 5),
-                        Text("Size: ${user.myorder?[0].size ?? 'N/A'}"),
+                        Text("Size: ${user.myorder?[index].size ?? 'N/A'}"),
                         SizedBox(height: 5),
-                        Text("Count: ${user.myorder?[0].count ?? 'N/A'}"),
+                        Text("Count: ${user.myorder?[index].count ?? 'N/A'}"),
                         SizedBox(height: 5),
                         Text(
-                            "Total Price: ${user.myorder?[0].totalprice != null ? '${user.myorder?[0].totalprice} THB' : 'N/A'}"),
+                            "Total Price: ${user.myorder?[index].totalprice != null ? '${user.myorder?[index].totalprice} THB' : 'N/A'}"),
                         SizedBox(height: 5),
                       ],
                     ),
