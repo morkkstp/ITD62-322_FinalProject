@@ -1,11 +1,12 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, sort_child_properties_last, avoid_print, camel_case_types
+// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, sort_child_properties_last, avoid_print, camel_case_types, use_build_context_synchronously
+
+import 'dart:convert';
 
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/order.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
 import 'package:finalproject_t_shop/tshirt/tshirtedit.dart';
-import 'package:finalproject_t_shop/tshirt/tshirtinfo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,6 +20,9 @@ class addToCart extends StatefulWidget {
 }
 
 class _addToCartState extends State<addToCart> {
+  final _formkey = GlobalKey<FormState>();
+  Users user = Configure.login;
+  late Order order;
   Widget mainBody = Container();
   List<Order> _orderList = [];
 
@@ -46,6 +50,45 @@ class _addToCartState extends State<addToCart> {
     var resp = await http.delete(url);
     print(resp.body);
     return;
+  }
+
+  Future<void> addOrder(BuildContext context, Users user) async {
+    var url = Uri.http(Configure.server, '/users/${user.id}');
+    var resp = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(order.toJson()),
+    );
+    var rs = orderFromJson("[${resp.body}]");
+    if (rs.length == 1) {
+      Navigator.pushNamed(context, '/addtocart');
+    }
+    return;
+  }
+
+  Widget addOrderButton(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        if (_formkey.currentState!.validate()) {
+          _formkey.currentState!.save();
+          user.myorder![0].name = order.name;
+          user.myorder![0].price = order.price;
+          user.myorder![0].img = order.img;
+          user.myorder![0].count = order.count;
+          user.myorder![0].totalprice = (order.price! * order.count!);
+          user.myorder![0].size = order.size;
+          print(user.myorder![0].toJson());
+          addOrder(context, user);
+        }
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.green,
+        padding: const EdgeInsets.all(20.0),
+      ),
+      child: Text("Order"),
+    );
   }
 
   Widget showUsers() {
@@ -115,15 +158,18 @@ class _addToCartState extends State<addToCart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Cart"),
-          backgroundColor: Color(0xFF2E2E2E),
-        ),
-        drawer: SideMenu(),
-        body: mainBody,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.shopping_basket),
-        ));
+      appBar: AppBar(
+        title: const Text("Cart"),
+        backgroundColor: Color(0xFF2E2E2E),
+      ),
+      drawer: SideMenu(),
+      body: mainBody,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          addOrderButton(context);
+        },
+        child: const Icon(Icons.person_add_alt_1),
+      ),
+    );
   }
 }
