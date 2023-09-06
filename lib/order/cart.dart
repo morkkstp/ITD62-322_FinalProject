@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/order.dart';
 import 'package:finalproject_t_shop/models/users.dart';
+import 'package:finalproject_t_shop/order/preorder.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
 import 'package:finalproject_t_shop/tshirt/tshirtedit.dart';
 import 'package:flutter/material.dart';
@@ -50,44 +51,6 @@ class _addToCartState extends State<addToCart> {
     var resp = await http.delete(url);
     print(resp.body);
     return;
-  }
-
-  Future<void> addOrder(BuildContext context, user) async {
-    var url = Uri.http(Configure.server, '/users/${user.id}}');
-    var resp = await http.post(
-      url,
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode(order.toJson()),
-    );
-    var rs = orderFromJson("[${resp.body}]");
-    if (rs.length == 1) {
-      Navigator.pushNamed(context, '/addtocart');
-    }
-    return;
-  }
-
-  Widget addOrderButton(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        if (_formkey.currentState!.validate()) {
-          _formkey.currentState!.save();
-          user.myorder?[0].name = order.name;
-          user.myorder?[0].price = order.price;
-          user.myorder?[0].size = order.size;
-          user.myorder?[0].img = order.img;
-          user.myorder?[0].count = order.count;
-          user.myorder?[0].totalprice = order.totalprice;
-          addOrder(context, order);
-        }
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.green,
-        padding: const EdgeInsets.all(10.0),
-      ),
-      child: Text("Order"),
-    );
   }
 
   Widget showUsers() {
@@ -139,8 +102,22 @@ class _addToCartState extends State<addToCart> {
                           child: Text('Edit',
                               style: TextStyle(color: Colors.blue)),
                         ),
-                        SizedBox(height: 5),
-                        addOrderButton(context),
+                        InkWell(
+                          onTap: () async {
+                            String result = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PreOrder(),
+                                settings: RouteSettings(arguments: order),
+                              ),
+                            );
+                            if (result == "refresh") {
+                              getOrder();
+                            }
+                          },
+                          child: Text('Accept',
+                              style: TextStyle(color: Colors.green)),
+                        ),
                       ],
                     ))),
             onDismissed: (direction) {
