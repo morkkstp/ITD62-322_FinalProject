@@ -19,7 +19,8 @@ class _TshirtEditState extends State<TshirtEdit> {
   final _formkey = GlobalKey<FormState>();
   late Tshirt tshirt;
   late Order order;
-  int _tshirtCount = 1;
+
+  late int _tshirtCount; // Declare _tshirtCount as a late int
 
   @override
   void initState() {
@@ -42,6 +43,8 @@ class _TshirtEditState extends State<TshirtEdit> {
         });
       }
     }
+
+    print(order.count.runtimeType);
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

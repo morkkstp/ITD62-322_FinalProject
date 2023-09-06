@@ -32,23 +32,30 @@ class _TshirtInfoState extends State<TshirtInfo> {
   Widget chooseSize() {
     var initGen = "S";
     try {
-      if (order.size!.isEmpty) {
+      if (order.size != null && order.size!.isNotEmpty) {
         initGen = order.size!;
       }
     } catch (e) {
       initGen = "S";
     }
 
-    return DropdownButtonFormField(
-        decoration: InputDecoration(border: OutlineInputBorder()),
-        value: initGen,
-        items: Configure.size.map((String val) {
-          return DropdownMenuItem(value: val, child: Text(val));
-        }).toList(),
-        onChanged: (value) {
+    return DropdownButtonFormField<String>(
+      decoration: InputDecoration(border: OutlineInputBorder()),
+      value: initGen,
+      items: Configure.size.map((String val) {
+        return DropdownMenuItem<String>(value: val, child: Text(val));
+      }).toList(),
+      onChanged: (String? value) {
+        if (value != null) {
           order.size = value;
-        },
-        onSaved: (newValue) => order.size);
+        }
+      },
+      onSaved: (String? newValue) {
+        if (newValue != null) {
+          order.size = newValue;
+        }
+      },
+    );
   }
 
   Widget countTshirt() {
