@@ -42,7 +42,7 @@ class Users {
         myorder: json["myorder"] == null
             ? []
             : List<Myorder>.from(
-                json["myorder"]!.map((x) => Myorder.fromJson(x))),
+                json["myorder"].map((x) => Myorder.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

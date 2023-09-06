@@ -29,7 +29,7 @@ class _PreOrderState extends State<PreOrder> {
   }
 
   Future<void> addOrder(BuildContext context, user) async {
-    var url = Uri.http(Configure.server, '/users/${user.id}}');
+    var url = Uri.http(Configure.server, '/users/${user.id}');
     var resp = await http.post(
       url,
       headers: <String, String>{
@@ -108,11 +108,11 @@ class _PreOrderState extends State<PreOrder> {
               ),
               ListTile(
                 title: const Text("T-Shirt Count"),
-                subtitle: Text("${order.count}"),
+                subtitle: Text("${order.count} item"),
               ),
               ListTile(
                 title: const Text("T-Shirt Total Price"),
-                subtitle: Text("${order.size}"),
+                subtitle: Text("${order.totalprice} THB"),
               ),
               ListTile(
                 title: const Text("Order Address"),
