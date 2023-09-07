@@ -99,9 +99,28 @@ class _addToCartState extends State<addToCart> {
                               getOrder();
                             }
                           },
-                          child: Text('Edit',
-                              style: TextStyle(color: Colors.blue)),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 12.0),
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                color: Colors
+                                    .blue, // Change the border color to blue
+                                width: 1.0, // Optional: Change the border width
+                              ),
+                            ),
+                            child: Text(
+                              'Edit',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
+                        SizedBox(height: 10),
                         InkWell(
                           onTap: () async {
                             String result = await Navigator.push(
@@ -115,8 +134,26 @@ class _addToCartState extends State<addToCart> {
                               getOrder();
                             }
                           },
-                          child: Text('Accept',
-                              style: TextStyle(color: Colors.green)),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 12.0),
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 255, 0, 0),
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                color: Color.fromARGB(255, 255, 0,
+                                    0), // Change the border color to green
+                                width: 1.0, // Optional: Change the border width
+                              ),
+                            ),
+                            child: Text(
+                              'Accept',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ))),

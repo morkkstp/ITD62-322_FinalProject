@@ -96,12 +96,19 @@ class _HomeState extends State<Home> {
                                 ),
                                 SizedBox(height: 10.0),
                                 Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text("${tshirt.name}")),
+                                  alignment: Alignment.centerLeft,
+                                  child: Text("${tshirt.name}"),
+                                ),
                                 SizedBox(height: 10.0),
                                 Align(
                                   alignment: Alignment.centerRight,
-                                  child: Text("${tshirt.price} THB"),
+                                  child: Text(
+                                    "${tshirt.price} THB",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 255, 0,
+                                          0), // Change the color to your desired color
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -114,7 +121,7 @@ class _HomeState extends State<Home> {
                                 ),
                               );
                             },
-                          ),
+                          )
                         ],
                       ),
                     ),

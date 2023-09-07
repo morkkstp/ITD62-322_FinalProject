@@ -20,7 +20,7 @@ class _TshirtEditState extends State<TshirtEdit> {
   late Tshirt tshirt;
   late Order order;
 
-  late int _tshirtCount; // Declare _tshirtCount as a late int
+  int _tshirtCount = 1; // Declare _tshirtCount as a late int
 
   @override
   void initState() {
