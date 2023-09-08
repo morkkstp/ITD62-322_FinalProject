@@ -6,6 +6,7 @@ import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
 import 'package:finalproject_t_shop/tshirt/tshirtinfo.dart';
 import 'package:flutter/material.dart';
+
 import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
@@ -32,6 +33,7 @@ class _HomeState extends State<Home> {
   Future<void> getTshirt() async {
     var url = Uri.http(Configure.server, "tshirt");
     var resp = await http.get(url);
+
     setState(() {
       _tshirtList = tshirtFromJson(resp.body);
       mainBody = showTshirt();
@@ -42,6 +44,7 @@ class _HomeState extends State<Home> {
   Widget showTshirt() {
     return ListView.builder(
       // +1 เพื่อให้มีรายการเสื้อและหัวข้อ
+
       itemCount: (_tshirtList.length / 2).ceil() + 1,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
@@ -109,7 +112,7 @@ class _HomeState extends State<Home> {
                                       child: Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                            "Rating: ${tshirt.rating!.rate}",
+                                            "Rating: ${tshirt.rating!.rate} ⭐️",
                                             style: TextStyle(
                                                 fontSize: 12.0,
                                                 color: Colors.grey[700])),
