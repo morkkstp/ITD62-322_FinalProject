@@ -19,28 +19,73 @@ class UserInfo extends StatelessWidget {
             title: const Text("Profile"), backgroundColor: Color(0xFF2E2E2E)),
         drawer: SideMenu(),
         body: Card(
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10.0),
             child: Column(
               children: [
                 ListTile(
-                    title: Center(
-                        child: Text("Hello ${user.firstname}",
-                            style: TextStyle(fontSize: 30)))),
-                ListTile(
-                    title: Text("Username"),
-                    subtitle: Text("${user.username}")),
-                ListTile(
-                    title: Text("Password"),
-                    subtitle: Text("${user.password}")),
-                ListTile(
-                    title: Text("Firstname"),
-                    subtitle: Text("${user.firstname}")),
-                ListTile(
-                    title: Text("Lastname"),
-                    subtitle: Text("${user.lastname}")),
-                ListTile(title: Text("Phone"), subtitle: Text("${user.phone}")),
-                ListTile(
-                    title: Text("Address"), subtitle: Text("${user.address}")),
+                  title: Center(
+                    child: Text("Hello ${user.firstname}",
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+                AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Image.network(
+                        "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png")),
+                SizedBox(height: 20.0),
+                Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Divider(height: 2.0, color: Colors.black),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ListTile(
+                        title: Text("Username"),
+                        subtitle: Text("${user.username}"),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListTile(
+                        title: Text("Password"),
+                        subtitle: Text("${user.password}"),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ListTile(
+                        title: Text("Firstname"),
+                        subtitle: Text("${user.firstname}"),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListTile(
+                        title: Text("Lastname"),
+                        subtitle: Text("${user.lastname}"),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ListTile(
+                        title: Text("Phone"),
+                        subtitle: Text("${user.phone}"),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListTile(
+                        title: Text("Address"),
+                        subtitle: Text("${user.address}"),
+                      ),
+                    ),
+                  ],
+                ),
                 SizedBox(height: 20.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

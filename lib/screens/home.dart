@@ -80,18 +80,21 @@ class _HomeState extends State<Home> {
                     _tshirtList.sublist(startIndex, endIndex).map((tshirt) {
                   return Expanded(
                     child: Card(
-                      margin: EdgeInsets.all(8.0),
+                      margin: EdgeInsets.all(10.0),
                       elevation: 2.0,
                       child: Column(
                         children: [
                           ListTile(
                             title: Column(
                               children: [
-                                AspectRatio(
-                                  aspectRatio: 1,
-                                  child: Image.network(
-                                    "${tshirt.img}",
-                                    fit: BoxFit.cover,
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 6.0),
+                                  child: AspectRatio(
+                                    aspectRatio: 1,
+                                    child: Image.network(
+                                      "${tshirt.img}",
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(height: 10.0),
@@ -100,16 +103,28 @@ class _HomeState extends State<Home> {
                                   child: Text("${tshirt.name}"),
                                 ),
                                 SizedBox(height: 10.0),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    "${tshirt.price} THB",
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 0,
-                                          0), // Change the color to your desired color
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "${tshirt.rating!.rate}",
+                                          style: TextStyle(color: Colors.grey),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
+                                    Expanded(
+                                      child: Text(
+                                        "${tshirt.price} THB",
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
                             onTap: () {

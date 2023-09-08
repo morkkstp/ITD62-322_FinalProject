@@ -64,30 +64,34 @@ class UserOrder extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 5.0,
-                        horizontal: 20.0), // Adjust padding as needed
-                    decoration: BoxDecoration(
-                      color: Colors.blue, // Change the button background color
-                      borderRadius:
-                          BorderRadius.circular(10.0), // Add rounded corners
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5), // Add a shadow
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                          offset: Offset(0, 3), // Offset of the shadow
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 5.0,
+                          horizontal: 20.0), // Adjust padding as needed
+                      decoration: BoxDecoration(
+                        color:
+                            Colors.blue, // Change the button background color
+                        borderRadius:
+                            BorderRadius.circular(10.0), // Add rounded corners
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5), // Add a shadow
+                            spreadRadius: 2,
+                            blurRadius: 4,
+                            offset: Offset(0, 3), // Offset of the shadow
+                          ),
+                        ],
+                      ),
+                      child: Text(
+                        "View Order Detail",
+                        style: TextStyle(
+                          color: Colors.white, // Change the text color to white
+                          fontWeight:
+                              FontWeight.bold, // Adjust font weight as needed
+                          fontSize: 14.0, // Adjust font size as needed
                         ),
-                      ],
-                    ),
-                    child: Text(
-                      "View Order Detail",
-                      style: TextStyle(
-                        color: Colors.white, // Change the text color to white
-                        fontWeight:
-                            FontWeight.bold, // Adjust font weight as needed
-                        fontSize: 14.0, // Adjust font size as needed
                       ),
                     ),
                   ),

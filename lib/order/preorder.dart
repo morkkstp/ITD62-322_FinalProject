@@ -80,7 +80,7 @@ class _PreOrderState extends State<PreOrder> {
     }
     return Scaffold(
       appBar: AppBar(
-          title: const Text("Tshirt Cart Edit"),
+          title: const Text("Tshirt Pre-Order Detail"),
           backgroundColor: const Color(0xFF2E2E2E)),
       body: Container(
         margin: const EdgeInsets.all(10),
@@ -89,49 +89,100 @@ class _PreOrderState extends State<PreOrder> {
           child: ListView(
             // Wrap your Column with a ListView
             children: [
-              AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Image.network(imgUrl),
+              ListTile(
+                title: const Text("T-Shirt Detail",
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                child: Divider(height: 2.0, color: Colors.black),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Image.network(imgUrl),
+                ),
               ),
               ListTile(
                 title:
                     const Text("T-Shirt Name", style: TextStyle(fontSize: 15)),
                 subtitle: Text("${order.name}"),
               ),
-              ListTile(
-                title: const Text("T-Shirt Price"),
-                subtitle: Text("${order.price} THB"),
+              Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("T-Shirt Price"),
+                      subtitle: Text("${order.price} THB"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("T-Shirt Size"),
+                      subtitle: Text("${order.size}"),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("T-Shirt Count"),
+                      subtitle: Text("${order.count} item"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("T-Shirt Total Price"),
+                      subtitle: Text("${order.totalprice} THB"),
+                    ),
+                  )
+                ],
               ),
               ListTile(
-                title: const Text("T-Shirt Size"),
-                subtitle: Text("${order.size}"),
+                title: const Text(
+                  "Order Address",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
               ),
-              ListTile(
-                title: const Text("T-Shirt Count"),
-                subtitle: Text("${order.count} item"),
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                child: Divider(height: 2.0, color: Colors.black),
               ),
-              ListTile(
-                title: const Text("T-Shirt Total Price"),
-                subtitle: Text("${order.totalprice} THB"),
+              Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("Firstname"),
+                      subtitle: Text("${user.firstname}"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("Lastname"),
+                      subtitle: Text("${user.lastname}"),
+                    ),
+                  )
+                ],
               ),
-              ListTile(
-                title: const Text("Order Address"),
-              ),
-              ListTile(
-                title: const Text("Firstname"),
-                subtitle: Text("${user.firstname}"),
-              ),
-              ListTile(
-                title: const Text("Lastname"),
-                subtitle: Text("${user.lastname}"),
-              ),
-              ListTile(
-                title: const Text("Phone Number"),
-                subtitle: Text("${user.phone}"),
-              ),
-              ListTile(
-                title: const Text("Address"),
-                subtitle: Text("${user.address}"),
+              Row(
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("Phone Number"),
+                      subtitle: Text("${user.phone}"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      title: const Text("Address"),
+                      subtitle: Text("${user.address}"),
+                    ),
+                  )
+                ],
               ),
               addOrderButton(context),
             ],

@@ -25,45 +25,98 @@ class UserOrderDetail extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: ListView(
           children: [
-            AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image.network(imgOrder),
+            ListTile(
+              title: const Text("T-Shirt Detail",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Divider(height: 2.0, color: Colors.black),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                // child: Image.network(imgUrl),
+              ),
             ),
             ListTile(
-              title: Text("T-Shirt Name", style: TextStyle(fontSize: 15)),
-              subtitle: Text("${myOrder.name}"),
+              title: const Text("T-Shirt Name", style: TextStyle(fontSize: 15)),
+              // subtitle: Text("${order.name}"),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    title: const Text("T-Shirt Price"),
+                    // subtitle: Text("${order.price} THB"),
+                  ),
+                ),
+                Expanded(
+                  child: ListTile(
+                    title: const Text("T-Shirt Size"),
+                    // subtitle: Text("${order.size}"),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    title: const Text("T-Shirt Count"),
+                    // subtitle: Text("${order.count} item"),
+                  ),
+                ),
+                Expanded(
+                  child: ListTile(
+                    title: const Text("T-Shirt Total Price"),
+                    // subtitle: Text("${order.totalprice} THB"),
+                  ),
+                )
+              ],
             ),
             ListTile(
-              title: Text("T-Shirt Price"),
-              subtitle: Text("${myOrder.price} THB"),
+              title: const Text(
+                "Order Address",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
             ),
-            ListTile(
-              title: Text("T-Shirt Size"),
-              subtitle: Text("${myOrder.size}"),
+            Padding(
+              padding: EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Divider(height: 2.0, color: Colors.black),
             ),
-            ListTile(
-              title: Text("T-Shirt Count"),
-              subtitle: Text("${myOrder.count}"),
+            Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    title: const Text("Firstname"),
+                    subtitle: Text("${user.firstname}"),
+                  ),
+                ),
+                Expanded(
+                  child: ListTile(
+                    title: const Text("Lastname"),
+                    subtitle: Text("${user.lastname}"),
+                  ),
+                )
+              ],
             ),
-            ListTile(
-              title: Text("Total Price"),
-              subtitle: Text("${myOrder.totalprice} THB"),
-            ),
-            ListTile(
-              title: Text("Firstname"),
-              subtitle: Text("${user.firstname}"),
-            ),
-            ListTile(
-              title: Text("Lastname"),
-              subtitle: Text("${user.lastname}"),
-            ),
-            ListTile(
-              title: Text("Phone Number"),
-              subtitle: Text("${user.phone}"),
-            ),
-            ListTile(
-              title: Text("Address"),
-              subtitle: Text("${user.address}"),
+            Row(
+              children: [
+                Expanded(
+                  child: ListTile(
+                    title: const Text("Phone Number"),
+                    subtitle: Text("${user.phone}"),
+                  ),
+                ),
+                Expanded(
+                  child: ListTile(
+                    title: const Text("Address"),
+                    subtitle: Text("${user.address}"),
+                  ),
+                )
+              ],
             ),
           ],
         ),

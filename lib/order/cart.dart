@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, sort_child_properties_last, avoid_print, camel_case_types, use_build_context_synchronously
 
-import 'dart:convert';
-
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/order.dart';
 import 'package:finalproject_t_shop/models/users.dart';
@@ -21,7 +19,6 @@ class addToCart extends StatefulWidget {
 }
 
 class _addToCartState extends State<addToCart> {
-  final _formkey = GlobalKey<FormState>();
   Users user = Configure.login;
   late Order order;
   Widget mainBody = Container();
@@ -55,119 +52,119 @@ class _addToCartState extends State<addToCart> {
 
   Widget showUsers() {
     return ListView.builder(
-        itemCount: orderList.length,
-        itemBuilder: (context, index) {
-          Order order = orderList[index];
-          var imgUrl = order.img ??
-              'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
-          return Dismissible(
-            key: UniqueKey(),
-            direction: DismissDirection.endToStart,
-            child: Card(
-                child: ListTile(
-                    title: Text("${order.name}"),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 5),
-                        Text(
-                            "Price: ${order.price != null ? '${order.price} THB' : 'N/A'}"),
-                        SizedBox(height: 5),
-                        Text("Size: ${order.size ?? 'N/A'}"),
-                        SizedBox(height: 5),
-                        Text("Count: ${order.count ?? 'N/A'}"),
-                        SizedBox(height: 5),
-                        Text(
-                            "Total Price: ${order.totalprice != null ? '${order.totalprice} THB' : 'N/A'}"),
-                        SizedBox(height: 5),
-                      ],
-                    ),
-                    leading: AspectRatio(
-                        aspectRatio: 1, child: Image.network(imgUrl)),
-                    trailing: Column(
-                      children: [
-                        InkWell(
-                          onTap: () async {
-                            String result = await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TshirtEdit(),
-                                settings: RouteSettings(arguments: order),
-                              ),
-                            );
-                            if (result == "refresh") {
-                              getOrder();
-                            }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 12.0),
-                            decoration: BoxDecoration(
+      itemCount: orderList.length,
+      itemBuilder: (context, index) {
+        Order order = orderList[index];
+        var imgUrl = order.img ??
+            'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
+
+        return Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Card(
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text("${order.name}"),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 5),
+                      Text(
+                          "Price: ${order.price != null ? '${order.price} THB' : 'N/A'}"),
+                      SizedBox(height: 5),
+                      Text("Size: ${order.size ?? 'N/A'}"),
+                      SizedBox(height: 5),
+                      Text("Count: ${order.count ?? 'N/A'}"),
+                      SizedBox(height: 5),
+                      Text(
+                          "Total Price: ${order.totalprice != null ? '${order.totalprice} THB' : 'N/A'}"),
+                      SizedBox(height: 5),
+                    ],
+                  ),
+                  leading:
+                      AspectRatio(aspectRatio: 1, child: Image.network(imgUrl)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          String result = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PreOrder(),
+                              settings: RouteSettings(arguments: order),
+                            ),
+                          );
+                          if (result == "refresh") {
+                            getOrder();
+                          }
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 12.0),
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: Colors.green,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Text(
+                            'Accept',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      InkWell(
+                        onTap: () async {
+                          String result = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TshirtEdit(),
+                              settings: RouteSettings(arguments: order),
+                            ),
+                          );
+                          if (result == "refresh") {
+                            getOrder();
+                          }
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 12.0),
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
                               color: Colors.blue,
-                              borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(
-                                color: Colors
-                                    .blue, // Change the border color to blue
-                                width: 1.0, // Optional: Change the border width
-                              ),
+                              width: 1.0,
                             ),
-                            child: Text(
-                              'Edit',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          ),
+                          child: Text(
+                            'Edit',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
-                        InkWell(
-                          onTap: () async {
-                            String result = await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => PreOrder(),
-                                settings: RouteSettings(arguments: order),
-                              ),
-                            );
-                            if (result == "refresh") {
-                              getOrder();
-                            }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 12.0),
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 255, 0, 0),
-                              borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(
-                                color: Color.fromARGB(255, 255, 0,
-                                    0), // Change the border color to green
-                                width: 1.0, // Optional: Change the border width
-                              ),
-                            ),
-                            child: Text(
-                              'Accept',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ))),
-            onDismissed: (direction) {
-              removeOrder(order);
-            }, // to delete
-            background: Container(
-              color: Colors.red,
-              margin: EdgeInsets.symmetric(horizontal: 15),
-              alignment: Alignment.centerRight,
-              child: Icon(Icons.delete, color: Colors.white),
-            ),
-          );
-        });
+                      ),
+                    ],
+                  ),
+                ),
+              ], // แทรกตรงนี้
+            ), // Column ที่ประกอบ Card และที่มีปัญหา
+          ),
+        );
+      },
+    );
   }
 
   @override
