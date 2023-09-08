@@ -4,38 +4,59 @@ import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/myorder.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
-import 'package:finalproject_t_shop/user/userorderdetail.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-class UserOrder extends StatelessWidget {
+class UserOrder extends StatefulWidget {
   static const routeName = "/order";
 
-  final Myorder myorder; // รับค่า myorder เป็นตัวแปรชนิด Myorder
-
-  const UserOrder({Key? key, required this.myorder});
+  const UserOrder({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    var myorder = ModalRoute.of(context)!.settings.arguments as Myorder;
-    List<Myorder> myorderList = [];
+  State<UserOrder> createState() => _UserOrderState();
+}
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("My Order"),
-        backgroundColor: const Color(0xFF2E2E2E),
-      ),
-      drawer: SideMenu(),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(10),
-        itemCount: myorder.length,
-        itemBuilder: (context, index) {
-          var imgorder = myorder.img;
-          imgorder ??=
-              'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg';
+class _UserOrderState extends State<UserOrder> {
+  Widget mainBody = Container();
+  List<Myorder> _myorderList = [];
 
-          // เพิ่มเงื่อนไขเช็ค uid ของ myorder กับ id ใน Users
-          if (Configure.login.id == myorder.uid) {
-            return Card(
+  @override
+  void initState() {
+    super.initState();
+    Users user = Configure.login;
+    if (user.id != null) {
+      getMyOrder();
+    }
+  }
+
+  Future<void> getMyOrder() async {
+    Users user = Configure.login;
+    var url = Uri.http(Configure.server, "myorder");
+    var resp = await http.get(url);
+    List<Myorder> allMyOrders = myorderFromJson(resp.body);
+
+    // กรองรายการ Myorder ที่มี uid เท่ากับ id ของผู้ใช้
+    _myorderList =
+        allMyOrders.where((myorder) => myorder.uid == user.id).toList();
+
+    setState(() {
+      mainBody = showOrder();
+    });
+  }
+
+  Widget showOrder() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(10),
+      itemCount: _myorderList.length,
+      itemBuilder: (context, index) {
+        Myorder myorder = _myorderList[index];
+        var imgorder = myorder.img;
+        imgorder ??=
+            'https://t3.ftcdn.net/jpg/04/62/93/66/360_F_462936689_BpEEcxfgMuYPfTaIAOC1tCDurmsno7Sp.jpg';
+
+        return Dismissible(
+            key: UniqueKey(),
+            child: Card(
               child: Column(
                 children: [
                   ListTile(
@@ -74,7 +95,7 @@ class UserOrder extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
                       child: Container(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                             vertical: 5.0,
                             horizontal: 20.0), // Adjust padding as needed
                         decoration: BoxDecoration(
@@ -88,11 +109,12 @@ class UserOrder extends StatelessWidget {
                                   Colors.grey.withOpacity(0.5), // Add a shadow
                               spreadRadius: 2,
                               blurRadius: 4,
-                              offset: Offset(0, 3), // Offset of the shadow
+                              offset:
+                                  const Offset(0, 3), // Offset of the shadow
                             ),
                           ],
                         ),
-                        child: Text(
+                        child: const Text(
                           "View Order Detail",
                           style: TextStyle(
                             color:
@@ -107,13 +129,20 @@ class UserOrder extends StatelessWidget {
                   )
                 ],
               ),
-            );
-          } else {
-            // ถ้า uid ไม่ตรงกับ id ใน Users ให้สร้าง ListTile เปล่า
-            return ListTile();
-          }
-        },
+            ));
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My Order"),
+        backgroundColor: Color(0xFF2E2E2E),
       ),
+      drawer: SideMenu(),
+      body: mainBody,
     );
   }
 }
