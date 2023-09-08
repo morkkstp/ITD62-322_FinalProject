@@ -1,4 +1,6 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, sort_child_properties_last, avoid_print, camel_case_types, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:convert';
 
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/order.dart';
@@ -50,9 +52,23 @@ class _addToCartState extends State<addToCart> {
     return;
   }
 
+  Future<void> updateOrder(Map<String, dynamic> order) async {
+    var url = Uri.http(
+        Configure.server, "order/${order['id']}"); // อัปเดตตาม ID ของ order
+    var resp = await http.put(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(order), // ใช้ order ในการอัปเดต
+    );
+    var rs = orderFromJson("[${resp.body}]");
+    print("Updated Status.");
+  }
+
   Widget showUsers() {
-    if (orderList.length == 0) {
-      return const Center(
+    if (orderList.isEmpty) {
+      return Center(
         child: Text(
           "No Order",
           style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
@@ -65,6 +81,7 @@ class _addToCartState extends State<addToCart> {
           Order order = orderList[index];
           var imgUrl = order.img ??
               'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
+
           if (order.status != "success") {
             return Padding(
               padding: const EdgeInsets.all(10.0),
@@ -195,8 +212,18 @@ class _addToCartState extends State<addToCart> {
                         ],
                       ),
                     ),
-                  ], // แทรกตรงนี้
-                ), // Column ที่ประกอบ Card และที่มีปัญหา
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Center(
+                child: Text(
+                  "No Order",
+                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.w400),
+                ),
               ),
             );
           }
