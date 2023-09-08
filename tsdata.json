@@ -7,18 +7,7 @@
       "firstname": "Tony",
       "lastname": "Maddox",
       "phone": "0621234567",
-      "address": "Thasala, Nakhon Si Thammarat",
-      "myorder": [
-        {
-          "id": 1,
-          "name": "T-shirt Round Neck - Color Black",
-          "price": 390,
-          "size": "XL",
-          "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_09_462666.jpg?width=750",
-          "count": 8,
-          "totalprice": 3120
-        }
-      ]
+      "address": "Thasala, Nakhon Si Thammarat"
     },
     {
       "id": 2,
@@ -27,10 +16,7 @@
       "firstname": "Jasper",
       "lastname": "Maverick",
       "phone": "0627654321",
-      "address": "Thung Song, Nakhon Si Thammarat",
-      "myorder": [
-        {}
-      ]
+      "address": "Thung Song, Nakhon Si Thammarat"
     },
     {
       "id": 3,
@@ -39,10 +25,7 @@
       "firstname": "Leo",
       "lastname": "Jude",
       "phone": "0629876543",
-      "address": "Sichon, Nakhon Si Thammarat",
-      "myorder": [
-        {}
-      ]
+      "address": "Sichon, Nakhon Si Thammarat"
     },
     {
       "id": 4,
@@ -51,10 +34,7 @@
       "firstname": "Zane",
       "lastname": "Roman",
       "phone": "0623456789",
-      "address": "Khanom, Nakhon Si Thammarat",
-      "myorder": [
-        {}
-      ]
+      "address": "Khanom, Nakhon Si Thammarat"
     }
   ],
   "tshirt": [
@@ -147,15 +127,17 @@
       }
     }
   ],
-  "order": [
+  "order": [],
+  "myorder": [
     {
       "id": 1,
+      "uid": 1,
       "name": "T-shirt Round Neck - Color Black",
       "price": 390,
-      "size": "XL",
+      "size": "S",
       "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_09_462666.jpg?width=750",
-      "count": 6,
-      "totalprice": 2340
+      "count": 1,
+      "totalprice": 390
     }
   ]
 }

@@ -28,35 +28,45 @@ class _PreOrderState extends State<PreOrder> {
     order = Order();
   }
 
-  Future<void> addOrder(BuildContext context, user) async {
-    var url = Uri.http(Configure.server, '/users/${user.id}');
+  Future<void> removeOrder(order) async {
+    var url = Uri.http(Configure.server, "order/${order.id}");
+    var resp = await http.delete(url);
+    print(resp.body);
+    return;
+  }
+
+  Future<void> addOrder(Map<String, dynamic> orderData) async {
+    var url = Uri.http(Configure.server, '/myorder');
     var resp = await http.post(
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(order.toJson()),
+      body: jsonEncode(orderData),
     );
     var rs = orderFromJson("[${resp.body}]");
-    if (rs.length == 1) {
-      Navigator.pushNamed(context, '/order');
-    }
+    // if (rs.length == 1) {
+    //   Navigator.pushNamed(context, '/order');
+    // }
+    print("Pass");
     return;
   }
 
   Widget addOrderButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (_formkey.currentState!.validate()) {
-          _formkey.currentState!.save();
-          user.myorder?[0].name = order.name;
-          user.myorder?[0].price = order.price;
-          user.myorder?[0].size = order.size;
-          user.myorder?[0].img = order.img;
-          user.myorder?[0].count = order.count;
-          user.myorder?[0].totalprice = order.totalprice;
-          addOrder(context, order);
-        }
+        Map<String, dynamic> orderData = {
+          "id": order.id,
+          "uid": Configure.login.id,
+          "name": order.name,
+          "price": order.price,
+          "size": order.size,
+          "img": order.img,
+          "count": order.count,
+          "totalprice": order.totalprice
+        };
+        addOrder(orderData);
+        removeOrder(order);
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,

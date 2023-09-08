@@ -18,7 +18,6 @@ class Users {
   String? lastname;
   String? phone;
   String? address;
-  List<Myorder>? myorder;
 
   Users({
     this.id,
@@ -28,7 +27,6 @@ class Users {
     this.lastname,
     this.phone,
     this.address,
-    this.myorder,
   });
 
   factory Users.fromJson(Map<String, dynamic> json) => Users(
@@ -39,10 +37,6 @@ class Users {
         lastname: json["lastname"],
         phone: json["phone"],
         address: json["address"],
-        myorder: json["myorder"] == null
-            ? []
-            : List<Myorder>.from(
-                json["myorder"].map((x) => Myorder.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -53,48 +47,5 @@ class Users {
         "lastname": lastname,
         "phone": phone,
         "address": address,
-        "myorder": myorder == null
-            ? []
-            : List<dynamic>.from(myorder!.map((x) => x.toJson())),
-      };
-}
-
-class Myorder {
-  int? id;
-  String? name;
-  int? price;
-  String? size;
-  String? img;
-  int? count;
-  int? totalprice;
-
-  Myorder({
-    this.id,
-    this.name,
-    this.price,
-    this.size,
-    this.img,
-    this.count,
-    this.totalprice,
-  });
-
-  factory Myorder.fromJson(Map<String, dynamic> json) => Myorder(
-        id: json["id"],
-        name: json["name"],
-        price: json["price"],
-        size: json["size"],
-        img: json["img"],
-        count: json["count"],
-        totalprice: json["totalprice"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "price": price,
-        "size": size,
-        "img": img,
-        "count": count,
-        "totalprice": totalprice,
       };
 }
