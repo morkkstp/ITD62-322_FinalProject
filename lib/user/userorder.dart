@@ -97,7 +97,7 @@ class _UserOrderState extends State<UserOrder> {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                UserOrderDetail(myOrder: myorder),
+                                UserOrderDetail(myorder: myorder),
                           ),
                         );
                       },

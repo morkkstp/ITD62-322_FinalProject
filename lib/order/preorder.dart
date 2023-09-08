@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, prefer_const_constructors, avoid_print
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors, avoid_print, unused_local_variable
 
 import 'dart:convert';
 
@@ -55,6 +55,7 @@ class _PreOrderState extends State<PreOrder> {
       body: jsonEncode(order), // ใช้ order ในการอัปเดต
     );
     var rs = orderFromJson("[${resp.body}]");
+    print(rs.toString());
     print("Updated Status.");
   }
 

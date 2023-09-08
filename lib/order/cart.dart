@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_local_variable, avoid_print
 
 import 'dart:convert';
 
@@ -63,6 +63,7 @@ class _addToCartState extends State<addToCart> {
       body: jsonEncode(order), // ใช้ order ในการอัปเดต
     );
     var rs = orderFromJson("[${resp.body}]");
+    print(rs.toString());
     print("Updated Status.");
   }
 

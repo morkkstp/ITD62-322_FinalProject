@@ -1,20 +1,19 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, use_key_in_widget_constructors
-
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/myorder.dart';
-import 'package:flutter/material.dart';
 import 'package:finalproject_t_shop/models/users.dart';
+import 'package:flutter/material.dart';
 
 class UserOrderDetail extends StatelessWidget {
-  final Myorder myOrder;
-  Users user = Configure.login;
+  final Myorder myorder;
 
-  UserOrderDetail({Key? key, required this.myOrder});
+  UserOrderDetail({Key? key, required this.myorder});
 
   @override
   Widget build(BuildContext context) {
-    // ใช้ข้อมูลจาก myOrder ในการแสดงข้อมูลที่ถูกเลือก
-    final imgOrder = myOrder.img ??
+    var myorder = ModalRoute.of(context)!.settings.arguments as Myorder;
+    Users user = Configure.login;
+
+    final imgOrder = myorder.img ??
         'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
 
     return Scaffold(
@@ -38,25 +37,25 @@ class UserOrderDetail extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: AspectRatio(
                 aspectRatio: 16 / 9,
-                // child: Image.network(imgUrl),
+                child: Image.network(imgOrder),
               ),
             ),
             ListTile(
               title: const Text("T-Shirt Name", style: TextStyle(fontSize: 15)),
-              // subtitle: Text("${order.name}"),
+              // subtitle: Text("${myorder.name}"),
             ),
             Row(
               children: [
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Price"),
-                    // subtitle: Text("${order.price} THB"),
+                    // subtitle: Text("${myorder.price} THB"),
                   ),
                 ),
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Size"),
-                    // subtitle: Text("${order.size}"),
+                    // subtitle: Text("${myorder.size}"),
                   ),
                 )
               ],
@@ -66,13 +65,13 @@ class UserOrderDetail extends StatelessWidget {
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Count"),
-                    // subtitle: Text("${order.count} item"),
+                    // subtitle: Text("${myorder.count} item"),
                   ),
                 ),
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Total Price"),
-                    // subtitle: Text("${order.totalprice} THB"),
+                    // subtitle: Text("${myorder.totalprice} THB"),
                   ),
                 )
               ],
