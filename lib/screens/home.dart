@@ -109,9 +109,10 @@ class _HomeState extends State<Home> {
                                       child: Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          "${tshirt.rating!.rate}",
-                                          style: TextStyle(color: Colors.grey),
-                                        ),
+                                            "Rating: ${tshirt.rating!.rate}",
+                                            style: TextStyle(
+                                                fontSize: 12.0,
+                                                color: Colors.grey[700])),
                                       ),
                                     ),
                                     Expanded(
