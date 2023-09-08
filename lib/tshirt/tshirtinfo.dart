@@ -143,6 +143,7 @@ class _TshirtInfoState extends State<TshirtInfo> {
           order.img = tshirt.img;
           order.count = _tshirtCount;
           order.totalprice = (tshirt.price! * _tshirtCount);
+          order.status = "pending";
           print(order.toJson());
           addOrder(context, order);
         }

@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors, avoid_print
 
 import 'dart:convert';
 
@@ -28,34 +28,40 @@ class _PreOrderState extends State<PreOrder> {
     order = Order();
   }
 
-  Future<void> removeOrder(order) async {
-    var url = Uri.http(Configure.server, "order/${order.id}");
-    var resp = await http.delete(url);
-    print(resp.body);
-    return;
-  }
-
-  Future<void> addOrder(Map<String, dynamic> orderData) async {
+  Future<void> addOrder(Map<String, dynamic> order) async {
     var url = Uri.http(Configure.server, '/myorder');
     var resp = await http.post(
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(orderData),
+      body: jsonEncode(order),
     );
     var rs = orderFromJson("[${resp.body}]");
-    // if (rs.length == 1) {
-    //   Navigator.pushNamed(context, '/order');
-    // }
-    print("Pass");
+    if (rs.length == 1) {
+      Navigator.pushNamed(context, '/order');
+    }
     return;
+  }
+
+  Future<void> updateOrder(Map<String, dynamic> order) async {
+    var url = Uri.http(
+        Configure.server, "order/${order['id']}"); // อัปเดตตาม ID ของ order
+    var resp = await http.put(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8'
+      },
+      body: jsonEncode(order), // ใช้ order ในการอัปเดต
+    );
+    var rs = orderFromJson("[${resp.body}]");
+    print("Updated Status.");
   }
 
   Widget addOrderButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Map<String, dynamic> orderData = {
+        Map<String, dynamic> orderAdd = {
           "id": order.id,
           "uid": Configure.login.id,
           "name": order.name,
@@ -63,10 +69,21 @@ class _PreOrderState extends State<PreOrder> {
           "size": order.size,
           "img": order.img,
           "count": order.count,
-          "totalprice": order.totalprice
+          "totalprice": order.totalprice,
+          "status": "success"
         };
-        addOrder(orderData);
-        removeOrder(order);
+        Map<String, dynamic> orderUpdate = {
+          "id": order.id,
+          "name": order.name,
+          "price": order.price,
+          "size": order.size,
+          "img": order.img,
+          "count": order.count,
+          "totalprice": order.totalprice,
+          "status": "success"
+        };
+        addOrder(orderAdd);
+        updateOrder(orderUpdate);
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green,

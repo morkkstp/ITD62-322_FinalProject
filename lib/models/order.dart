@@ -18,6 +18,7 @@ class Order {
   String? img;
   int? count;
   int? totalprice;
+  String? status;
 
   Order({
     this.id,
@@ -27,6 +28,7 @@ class Order {
     this.img,
     this.count,
     this.totalprice,
+    this.status,
   });
 
   factory Order.fromJson(Map<String, dynamic> json) => Order(
@@ -37,6 +39,7 @@ class Order {
         img: json["img"],
         count: json["count"],
         totalprice: json["totalprice"],
+        status: json["status"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -47,5 +50,6 @@ class Order {
         "img": img,
         "count": count,
         "totalprice": totalprice,
+        "status": status,
       };
 }

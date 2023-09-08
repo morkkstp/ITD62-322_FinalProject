@@ -4,6 +4,7 @@ import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/myorder.dart';
 import 'package:finalproject_t_shop/models/users.dart';
 import 'package:finalproject_t_shop/screens/sidemenu.dart';
+import 'package:finalproject_t_shop/user/userorderdetail.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -84,13 +85,13 @@ class _UserOrderState extends State<UserOrder> {
                   ),
                   InkWell(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) =>
-                      //         UserOrderDetail(myOrder: myorder),
-                      //   ),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              UserOrderDetail(myOrder: myorder),
+                        ),
+                      );
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
