@@ -156,6 +156,34 @@ class _addToCartState extends State<addToCart> {
                           ),
                         ),
                       ),
+                      SizedBox(width: 10),
+                      InkWell(
+                        onTap: () async {
+                          // เรียกฟังก์ชัน removeOrder เมื่อปุ่ม Delete ถูกกด
+                          await removeOrder(order);
+                          // เรียกฟังก์ชัน getOrder เพื่อรีโหลดข้อมูลใหม่
+                          getOrder();
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 12.0),
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: Colors.red,
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Text(
+                            'Delete',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
