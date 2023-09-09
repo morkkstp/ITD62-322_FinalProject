@@ -217,16 +217,6 @@ class _addToCartState extends State<addToCart> {
                 ),
               ),
             );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.all(50.0),
-              child: Center(
-                child: Text(
-                  "No Order",
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.w400),
-                ),
-              ),
-            );
           }
         },
       );
