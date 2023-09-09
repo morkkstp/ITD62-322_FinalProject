@@ -43,12 +43,9 @@ class _HomeState extends State<Home> {
 
   Widget showTshirt() {
     return ListView.builder(
-      // +1 เพื่อให้มีรายการเสื้อและหัวข้อ
-
       itemCount: (_tshirtList.length / 2).ceil() + 1,
       itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
-          // แสดงหัวข้อ "T-Shirt Collection" และเส้นขั้น
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
@@ -56,10 +53,10 @@ class _HomeState extends State<Home> {
                 padding: EdgeInsets.all(20.0),
                 child: Center(
                   child: Text(
-                    "T-Shirt Collection", // หัวข้อที่คุณต้องการ
+                    "T-Shirt Collection",
                     style: TextStyle(
-                      fontSize: 20.0, // ปรับขนาดตามความต้องการ
-                      fontWeight: FontWeight.bold, // ปรับตัวหนาตามความต้องการ
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -71,7 +68,7 @@ class _HomeState extends State<Home> {
             ],
           );
         } else {
-          final int rowIndex = index - 1; // ลบ 1 เพื่อปรับให้ตรงกับรายการเสื้อ
+          final int rowIndex = index - 1;
           final int startIndex = rowIndex * 2;
           final int endIndex = startIndex + 2;
 
@@ -86,6 +83,7 @@ class _HomeState extends State<Home> {
                       margin: EdgeInsets.all(10.0),
                       elevation: 2.0,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ListTile(
                             title: Column(
@@ -114,7 +112,7 @@ class _HomeState extends State<Home> {
                                         child: Text(
                                             "Rating: ${tshirt.rating!.rate} ⭐️",
                                             style: TextStyle(
-                                                fontSize: 10.0,
+                                                fontSize: 12.0,
                                                 color: Colors.grey[700])),
                                       ),
                                     ),
@@ -123,7 +121,6 @@ class _HomeState extends State<Home> {
                                         "${tshirt.price} THB",
                                         style: TextStyle(
                                           color: Colors.red,
-                                          fontSize: 15.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -132,16 +129,36 @@ class _HomeState extends State<Home> {
                                 )
                               ],
                             ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => TshirtInfo(),
-                                  settings: RouteSettings(arguments: tshirt),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => TshirtInfo(),
+                                        settings:
+                                            RouteSettings(arguments: tshirt),
+                                      ),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.blue,
+                                  ),
+                                  child: Text(
+                                    "Buy",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                              );
-                            },
-                          )
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
