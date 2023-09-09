@@ -119,7 +119,7 @@ class _TshirtEditState extends State<TshirtEdit> {
         backgroundColor: Colors.green,
         padding: const EdgeInsets.all(20.0),
       ),
-      child: Text("Order"),
+      child: Text("Edit"),
     );
   }
 

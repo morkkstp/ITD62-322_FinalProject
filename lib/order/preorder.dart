@@ -90,7 +90,7 @@ class _PreOrderState extends State<PreOrder> {
         backgroundColor: Colors.green,
         padding: const EdgeInsets.all(10.0),
       ),
-      child: Text("Order"),
+      child: Text("Confirm"),
     );
   }
 
