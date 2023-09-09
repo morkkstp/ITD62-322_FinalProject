@@ -127,39 +127,6 @@
       }
     }
   ],
-  "order": [
-    {
-      "id": 1,
-      "name": "T-shirt Round Neck - Color Pink",
-      "price": 390,
-      "size": "L",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_10_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
-      "status": "success"
-    },
-    {
-      "id": 2,
-      "name": "T-shirt Round Neck - Color Dark Green",
-      "price": 390,
-      "size": "L",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_58_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
-      "status": "pending"
-    }
-  ],
-  "myorder": [
-    {
-      "id": 1,
-      "uid": 1,
-      "name": "T-shirt Round Neck - Color Pink",
-      "price": 390,
-      "size": "L",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_10_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
-      "status": "success"
-    }
-  ]
+  "order": [],
+  "myorder": []
 }
