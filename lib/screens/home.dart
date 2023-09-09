@@ -123,6 +123,7 @@ class _HomeState extends State<Home> {
                                         "${tshirt.price} THB",
                                         style: TextStyle(
                                           color: Colors.red,
+                                          fontSize: 15.0,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
