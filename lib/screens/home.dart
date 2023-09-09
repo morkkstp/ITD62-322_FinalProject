@@ -114,7 +114,7 @@ class _HomeState extends State<Home> {
                                         child: Text(
                                             "Rating: ${tshirt.rating!.rate} ⭐️",
                                             style: TextStyle(
-                                                fontSize: 12.0,
+                                                fontSize: 10.0,
                                                 color: Colors.grey[700])),
                                       ),
                                     ),

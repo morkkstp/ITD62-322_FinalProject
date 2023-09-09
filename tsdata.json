@@ -130,22 +130,12 @@
   "order": [
     {
       "id": 1,
-      "name": "T-shirt Round Neck - Color Black",
+      "name": "T-shirt Round Neck - Color Pink",
       "price": 390,
-      "size": "M",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_09_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
-      "status": "success"
-    },
-    {
-      "id": 2,
-      "name": "T-shirt Round Neck - Color Red",
-      "price": 390,
-      "size": "M",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_17_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
+      "size": "S",
+      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_10_462666.jpg?width=750",
+      "count": 1,
+      "totalprice": 390,
       "status": "success"
     }
   ],
@@ -153,23 +143,12 @@
     {
       "id": 1,
       "uid": 1,
-      "name": "T-shirt Round Neck - Color Black",
+      "name": "T-shirt Round Neck - Color Pink",
       "price": 390,
-      "size": "M",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_09_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
-      "status": "success"
-    },
-    {
-      "id": 2,
-      "uid": 1,
-      "name": "T-shirt Round Neck - Color Red",
-      "price": 390,
-      "size": "M",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_17_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
+      "size": "S",
+      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_10_462666.jpg?width=750",
+      "count": 1,
+      "totalprice": 390,
       "status": "success"
     }
   ]

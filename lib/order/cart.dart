@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, avoid_print, camel_case_types
+// ignore_for_file: prefer_const_constructors, unused_local_variable, avoid_print
 
 import 'dart:convert';
 
@@ -217,8 +217,9 @@ class _addToCartState extends State<addToCart> {
                 ),
               ),
             );
+          } else {
+            return Container();
           }
-          return null;
         },
       );
     }
