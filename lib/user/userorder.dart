@@ -105,32 +105,25 @@ class _UserOrderState extends State<UserOrder> {
                         padding: const EdgeInsets.only(bottom: 10.0),
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5.0,
-                              horizontal: 20.0), // Adjust padding as needed
+                              vertical: 5.0, horizontal: 20.0),
                           decoration: BoxDecoration(
-                            color: Colors
-                                .blue, // Change the button background color
-                            borderRadius: BorderRadius.circular(
-                                10.0), // Add rounded corners
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10.0),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey
-                                    .withOpacity(0.5), // Add a shadow
+                                color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 2,
                                 blurRadius: 4,
-                                offset:
-                                    const Offset(0, 3), // Offset of the shadow
+                                offset: const Offset(0, 3),
                               ),
                             ],
                           ),
                           child: const Text(
                             "View Order Detail",
                             style: TextStyle(
-                              color: Colors
-                                  .white, // Change the text color to white
-                              fontWeight: FontWeight
-                                  .bold, // Adjust font weight as needed
-                              fontSize: 14.0, // Adjust font size as needed
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.0,
                             ),
                           ),
                         ),
