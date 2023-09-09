@@ -146,64 +146,68 @@ class _UserEditState extends State<UserEdit> {
           title: Text("Edit Profile"),
           backgroundColor: Color(0xFF2E2E2E),
         ),
-        body: Card(
-          margin: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              Form(
-                key: _formkey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListTile(
-                        title: Center(
-                            child: Text(
-                      "Username: ${user.username}",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ))),
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, bottom: 10.0),
-                      child: passwordEdit(),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, bottom: 10.0),
-                      child: fnameEdit(),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, bottom: 10.0),
-                      child: lnameEdit(),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, bottom: 10.0),
-                      child: phoneEdit(),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 10.0, right: 10.0, bottom: 10.0),
-                      child: addressEdit(),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+        body: ListView(
+          children: [
+            Card(
+              margin: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Form(
+                    key: _formkey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        submitButton(),
+                        ListTile(
+                            title: Center(
+                                child: Text(
+                          "Username: ${user.username}",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ))),
+                        SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, right: 10.0, bottom: 10.0),
+                          child: passwordEdit(),
+                        ),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, right: 10.0, bottom: 10.0),
+                          child: fnameEdit(),
+                        ),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, right: 10.0, bottom: 10.0),
+                          child: lnameEdit(),
+                        ),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, right: 10.0, bottom: 10.0),
+                          child: phoneEdit(),
+                        ),
+                        SizedBox(height: 20),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10.0, right: 10.0, bottom: 10.0),
+                          child: addressEdit(),
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            submitButton(),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            )
+          ],
         ));
   }
 }

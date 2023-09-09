@@ -174,9 +174,15 @@ class _TshirtInfoState extends State<TshirtInfo> {
           child: Card(
             child: ListView(
               children: [
+                SizedBox(height: 15.0),
                 AspectRatio(
                   aspectRatio: 16 / 9,
                   child: Image.network(imgUrl),
+                ),
+                SizedBox(height: 20.0),
+                Padding(
+                  padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Divider(height: 2.0, color: Colors.black),
                 ),
                 ListTile(
                   title: Text("T-Shirt Name", style: TextStyle(fontSize: 15)),
