@@ -151,7 +151,7 @@ class _addToCartState extends State<addToCart> {
                           SizedBox(width: 10),
                           InkWell(
                             onTap: () async {
-                              String result = await Navigator.push(
+                              String? result = await Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => TshirtEdit(),
