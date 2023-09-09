@@ -127,29 +127,6 @@
       }
     }
   ],
-  "order": [
-    {
-      "id": 1,
-      "name": "T-shirt Round Neck - Color Black",
-      "price": 390,
-      "size": "L",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_09_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
-      "status": "success"
-    }
-  ],
-  "myorder": [
-    {
-      "id": 1,
-      "uid": 1,
-      "name": "T-shirt Round Neck - Color Black",
-      "price": 390,
-      "size": "L",
-      "img": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/462666/item/goods_09_462666.jpg?width=750",
-      "count": 3,
-      "totalprice": 1170,
-      "status": "success"
-    }
-  ]
+  "order": [],
+  "myorder": []
 }
