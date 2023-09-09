@@ -116,15 +116,6 @@ class _HomeState extends State<Home> {
                                                 color: Colors.grey[700])),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: Text(
-                                        "${tshirt.price} THB",
-                                        style: TextStyle(
-                                          color: Color.fromARGB(255, 255, 0, 0),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
                                   ],
                                 )
                               ],
@@ -135,6 +126,15 @@ class _HomeState extends State<Home> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
+                                Expanded(
+                                  child: Text(
+                                    "${tshirt.price} THB",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 255, 0, 0),
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
                                 ElevatedButton(
                                   onPressed: () {
                                     Navigator.push(

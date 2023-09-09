@@ -1,3 +1,3 @@
-# finalproject_t_shop
+# T_Sh0p Application 
 
-A new Flutter project.
+An Application for T-Shirt Online Store using Flutter Framework.
