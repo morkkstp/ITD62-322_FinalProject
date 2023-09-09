@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
 
   Widget usernameInputField() {
     return TextFormField(
-      initialValue: 'tuser1',
+      // initialValue: 'tuser1',
       decoration:
           InputDecoration(labelText: "Username:", border: OutlineInputBorder()),
       validator: (value) {
@@ -70,7 +70,7 @@ class _LoginState extends State<Login> {
 
   Widget passwordInputField() {
     return TextFormField(
-      initialValue: 'tu111',
+      // initialValue: 'tu111',
       obscureText: true,
       decoration:
           InputDecoration(labelText: "Password:", border: OutlineInputBorder()),

@@ -44,8 +44,6 @@ class _TshirtEditState extends State<TshirtEdit> {
       }
     }
 
-    print(order.count.runtimeType);
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

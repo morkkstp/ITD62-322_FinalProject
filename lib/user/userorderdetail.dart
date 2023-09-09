@@ -32,7 +32,7 @@ class _UserOrderDetailState extends State<UserOrderDetail> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("T-Shirt Detail"),
+        title: Text("T-Shirt Detail #${myorder.id}"),
         backgroundColor: Color(0xFF2E2E2E),
       ),
       body: Container(
