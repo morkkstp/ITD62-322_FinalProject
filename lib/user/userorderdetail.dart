@@ -1,17 +1,31 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:finalproject_t_shop/models/config.dart';
 import 'package:finalproject_t_shop/models/myorder.dart';
-import 'package:finalproject_t_shop/models/users.dart';
 import 'package:flutter/material.dart';
 
-class UserOrderDetail extends StatelessWidget {
-  final Myorder myorder;
+class UserOrderDetail extends StatefulWidget {
+  static const routeName = "/orderdetail";
 
-  UserOrderDetail({Key? key, required this.myorder});
+  const UserOrderDetail({Key? key}) : super(key: key);
+
+  @override
+  State<UserOrderDetail> createState() => _UserOrderDetailState();
+}
+
+class _UserOrderDetailState extends State<UserOrderDetail> {
+  final _formkey = GlobalKey<FormState>();
+  late Myorder myorder;
+
+  @override
+  void initState() {
+    super.initState();
+    myorder = Myorder();
+  }
 
   @override
   Widget build(BuildContext context) {
-    var myorder = ModalRoute.of(context)!.settings.arguments as Myorder;
-    Users user = Configure.login;
+    myorder = ModalRoute.of(context)!.settings.arguments as Myorder;
 
     final imgOrder = myorder.img ??
         'https://icon-library.com/images/no-picture-available-icon/no-picture-available-icon-20.jpg';
@@ -24,6 +38,7 @@ class UserOrderDetail extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.all(10),
         child: ListView(
+          key: _formkey,
           children: [
             ListTile(
               title: const Text("T-Shirt Detail",
@@ -42,20 +57,20 @@ class UserOrderDetail extends StatelessWidget {
             ),
             ListTile(
               title: const Text("T-Shirt Name", style: TextStyle(fontSize: 15)),
-              // subtitle: Text("${myorder.name}"),
+              subtitle: Text("${myorder.name}"),
             ),
             Row(
               children: [
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Price"),
-                    // subtitle: Text("${myorder.price} THB"),
+                    subtitle: Text("${myorder.price} THB"),
                   ),
                 ),
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Size"),
-                    // subtitle: Text("${myorder.size}"),
+                    subtitle: Text("${myorder.size}"),
                   ),
                 )
               ],
@@ -65,13 +80,13 @@ class UserOrderDetail extends StatelessWidget {
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Count"),
-                    // subtitle: Text("${myorder.count} item"),
+                    subtitle: Text("${myorder.count} item"),
                   ),
                 ),
                 Expanded(
                   child: ListTile(
                     title: const Text("T-Shirt Total Price"),
-                    // subtitle: Text("${myorder.totalprice} THB"),
+                    subtitle: Text("${myorder.totalprice} THB"),
                   ),
                 )
               ],
@@ -91,13 +106,13 @@ class UserOrderDetail extends StatelessWidget {
                 Expanded(
                   child: ListTile(
                     title: const Text("Firstname"),
-                    subtitle: Text("${user.firstname}"),
+                    subtitle: Text("${Configure.login.firstname}"),
                   ),
                 ),
                 Expanded(
                   child: ListTile(
                     title: const Text("Lastname"),
-                    subtitle: Text("${user.lastname}"),
+                    subtitle: Text("${Configure.login.lastname}"),
                   ),
                 )
               ],
@@ -107,13 +122,13 @@ class UserOrderDetail extends StatelessWidget {
                 Expanded(
                   child: ListTile(
                     title: const Text("Phone Number"),
-                    subtitle: Text("${user.phone}"),
+                    subtitle: Text("${Configure.login.phone}"),
                   ),
                 ),
                 Expanded(
                   child: ListTile(
                     title: const Text("Address"),
-                    subtitle: Text("${user.address}"),
+                    subtitle: Text("${Configure.login.address}"),
                   ),
                 )
               ],

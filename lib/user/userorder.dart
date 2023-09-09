@@ -96,8 +96,8 @@ class _UserOrderState extends State<UserOrder> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                UserOrderDetail(myorder: myorder),
+                            builder: (context) => UserOrderDetail(),
+                            settings: RouteSettings(arguments: myorder),
                           ),
                         );
                       },
