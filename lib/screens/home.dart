@@ -120,7 +120,8 @@ class _HomeState extends State<Home> {
                                       child: Text(
                                         "${tshirt.price} THB",
                                         style: TextStyle(
-                                          color: Colors.red,
+                                          color: const Color.fromARGB(
+                                              255, 0, 0, 0),
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
